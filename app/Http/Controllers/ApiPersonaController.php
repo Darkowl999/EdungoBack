@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Persona;
+use App\Administrador;
 
 class ApiPersonaController extends Controller
 {
@@ -13,7 +13,7 @@ class ApiPersonaController extends Controller
     }
 
     public function index(Request $request){
-        return Persona::all();
+        return Administrador::all();
     }
 
     public function store(Request $request){
