@@ -16,7 +16,7 @@ class MateriaController extends Controller
     public function getMaterias(){
         $Materias=Materia::get();
         $Areas=Area::get();
-        return view('Materias',compact('Materias'),compact('Areas'));
+        return view('materias',compact('Materias'),compact('Areas'));
     }
 
     public function ingresarMateria(Request $request){
