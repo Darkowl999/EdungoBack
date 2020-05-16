@@ -24,3 +24,5 @@ class AdministradorSeeder extends Seeder
 //userDB: id13676411_root	
 //hostDB: localhost
 //passwordDB: 9RFPvoeTs_?@F}*w
+
+//app_key_savedata(guardada por si acaso .env)=base64:bv93awGC+xzmma9lvA/A0p6G6UNiACpXoEUFPZHvmwg=
