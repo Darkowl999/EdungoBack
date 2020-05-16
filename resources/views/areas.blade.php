@@ -63,7 +63,7 @@
     <center>
         <br>
 
-        <form action="/edungo/public/ingresar_area" method="POST">
+        <form action="/ingresar_area" method="POST">
             {{ csrf_field() }}
             <b>Nombre categoria</b>
             <select id="Categorias" class="select" name="idCategoriaIngresada" >
@@ -82,7 +82,7 @@
 
             <br><hr>
             
-        <form action="/edungo/public/modificar_area" method="POST">
+        <form action="/modificar_area" method="POST">
             {{ csrf_field() }}
 
             <b>Nombre categoria</b>
@@ -113,7 +113,7 @@
 
             <br><hr>
 
-        <form action="/edungo/public/eliminar_area" method="POST">
+        <form action="/eliminar_area" method="POST">
             {{ csrf_field() }}
             <b>Nombre Area</b>
             <select id="Areas" class="select" name="nombreAreaEliminada" >

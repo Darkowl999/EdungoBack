@@ -65,7 +65,7 @@
         </div>
         <br>
     <center>
-        <form action="/edungo/public/ingresar_categoria" method="POST">
+        <form action="/ingresar_categoria" method="POST">
             {{ csrf_field() }}
             <input type="text" class="input" name="nombreCategoriaIngresada" placeholder="Nombre categoria">
             <input class="button" type="submit" value="Ingresar categoria" >
@@ -73,7 +73,7 @@
 
             <br><hr>
             
-        <form action="/edungo/public/modificar_categoria" method="POST">
+        <form action="/modificar_categoria" method="POST">
             {{ csrf_field() }}
                 <b class="b">Nombre categoria</b>
                 <select class="select" id="categorias" name="nombreCategoriaModificada" >
@@ -92,7 +92,7 @@
 
             <br><hr>
 
-        <form action="/edungo/public/eliminar_categoria" method="POST">
+        <form action="/eliminar_categoria" method="POST">
             {{ csrf_field() }}
             <b class="b">Nombre categoria</b>
             <select id="categorias" class="select" name="nombreCategoriaEliminada" >

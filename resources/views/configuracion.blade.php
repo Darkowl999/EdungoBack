@@ -22,7 +22,7 @@
         </ol>
 
 
-        <form action="/edungo/public/modificar_terminos_condiciones" method="POST">
+        <form action="/modificar_terminos_condiciones" method="POST">
             {{ csrf_field() }}
             <div class="input-group">
                 <div class="input-group-prepend">

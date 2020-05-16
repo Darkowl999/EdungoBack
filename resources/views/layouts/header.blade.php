@@ -19,7 +19,7 @@
 
 
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="/edungo/public/menu">Menu</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+        <a class="navbar-brand" href="/menu">Menu</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
         ><!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
           <!--  <div class="input-group">
@@ -35,10 +35,10 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="/edungo/public/configuracion">Configuraciones</a>
+                    <a class="dropdown-item" href="/configuracion">Configuraciones</a>
                     <a class="dropdown-item" href="#">Registro de actividades</a>
                     <div class="dropdown-divider"></div>
-                    <form  action="/edungo/public/logout" method="POST">
+                    <form  action="/logout" method="POST">
                         {{ csrf_field() }}
                         <input type="submit" class="dropdown-item" value="Cerrar sesión">
                     </form>
@@ -64,9 +64,9 @@
                         ></a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="/edungo/public/administrar_categorias">Categorias</a>
-                                <a class="nav-link" href="/edungo/public/administrar_areas">Areas</a>
-                                <a class="nav-link" href="/edungo/public/administrar_materias">Materias</a>
+                                <a class="nav-link" href="/administrar_categorias">Categorias</a>
+                                <a class="nav-link" href="/administrar_areas">Areas</a>
+                                <a class="nav-link" href="/administrar_materias">Materias</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
