@@ -1,3 +1,6 @@
+@extends('layouts.header')
+
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,27 +19,27 @@
        }
     
     
-       input{
+       .input{
         font-size:30px;
         margin-top: 15px;
         margin-bottom: 15px;
       }
 
-        body{
+        .body{
         font-size:30px;
           margin-top: 15px;
         margin-bottom: 15px;
         background-color: rgb(220, 255, 213);
         }
     
-        select{
+        .select{
         font-size:30px;
         margin-top: 15px;
         margin-bottom: 15px;
         background-color:rgb(187, 255, 190);
         }
         
-        a{
+        .a{
             font-size:50px;
             font-style: bold;
             margin-top: 15px;
@@ -48,15 +51,22 @@
 
 </head>
 <body>
-    <center>
 
-        <a class="">Administrar Areas</a>
+    
+    <div class="container-fluid">
+        <h1 class="mt-4">Areas</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Administrar areas</li>
+        </ol>
+    </div>
+
+    <center>
         <br>
 
         <form action="/edungo/public/ingresar_area" method="POST">
             {{ csrf_field() }}
             <b>Nombre categoria</b>
-            <select id="Categorias" name="idCategoriaIngresada" >
+            <select id="Categorias" class="select" name="idCategoriaIngresada" >
                 <?php
                     foreach ($Categorias as $Categoria){
                 ?>
@@ -66,7 +76,7 @@
                 ?>
             </select>
             <br>
-            <input type="text" name="nombreAreaIngresada" placeholder="Nombre area">
+            <input type="text" class="input"  name="nombreAreaIngresada" placeholder="Nombre area">
             <input class="button" type="submit" value="ingresar Area">
         </form>
 
@@ -76,7 +86,7 @@
             {{ csrf_field() }}
 
             <b>Nombre categoria</b>
-                <select id="Categorias" name="idCategoriaModificada" >
+                <select id="Categorias" class="select" name="idCategoriaModificada" >
                     <?php
                        foreach ($Categorias as $Categoria){
                  ?>
@@ -85,9 +95,9 @@
                      }
                     ?>
                 </select>
-                
-                <b>Nombre Area</b>
-                <select id="Areas" name="nombreAreaModificada" >
+                <br>
+                <b class="b">Nombre Area</b>
+                <select id="Areas" class="select" name="nombreAreaModificada" >
                     <?php
                         foreach ($Areas as $Area){
                     ?>
@@ -97,7 +107,7 @@
                     ?>
                 </select>
                 <br>
-            <input type="text" name="nuevoNombreModificado" placeholder="Nuevo nombre de area">
+            <input type="text" class="input" name="nuevoNombreModificado" placeholder="Nuevo nombre de area">
             <input class="button" type="submit" value="modificar area">
         </form>
 
@@ -106,7 +116,7 @@
         <form action="/edungo/public/eliminar_area" method="POST">
             {{ csrf_field() }}
             <b>Nombre Area</b>
-            <select id="Areas" name="nombreAreaEliminada" >
+            <select id="Areas" class="select" name="nombreAreaEliminada" >
                 <?php
                     foreach ($Areas as $Area){
                 ?>
@@ -115,6 +125,7 @@
                     }
                 ?>
             </select>
+            <br>
             <input class="button" type="submit" value="eliminar Area">
         </form>
 
@@ -122,3 +133,5 @@
     
 </body>
 </html>
+
+@endsection

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdministradorTable extends Migration
+class Configuracion extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateAdministradorTable extends Migration
      */
     public function up()
     {
-        Schema::create('administrador', function (Blueprint $table) {
+        Schema::create('configuracion', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
-            $table->string('password');
+            $table->string('terminos_condiciones',10000);
             $table->timestamps();
         });
     }
@@ -28,6 +27,8 @@ class CreateAdministradorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('administrador');
+        Schema::dropIfExists('configuracion');
     }
 }
+
+

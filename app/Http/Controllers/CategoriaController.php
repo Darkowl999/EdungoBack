@@ -8,6 +8,14 @@ use App\Categoria;
 
 class CategoriaController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth:administrador');
+    }
+
+    public function index(){
+        return Categoria::all();
+    }
+
     public function getCategorias(){
         $categorias=Categoria::get();
         return view('categorias',compact('categorias'));

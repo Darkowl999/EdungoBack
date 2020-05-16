@@ -8,6 +8,10 @@ use App\Categoria;
 
 class AreaController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth:administrador');
+    }
+
     public function getAreas(){
         $Areas=Area::get();
         $Categorias=Categoria::get();

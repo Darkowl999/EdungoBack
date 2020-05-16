@@ -13,15 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
+Route::get('/', 'AdministradorController@getVistaLogin')->name('/');
 
-Route::get('/menu', function () {
-    return view('menu');
-});
+Route::get('/menu', 'MenuController@getVistaMenu');
 
 Route::post('/login','AdministradorController@logearAdmin');
+Route::post('/logout','AdministradorController@logoutAdmin');
 
 Route::get('/administrar_categorias','CategoriaController@getCategorias');
 Route::post('/ingresar_categoria','CategoriaController@ingresarCategoria');
@@ -38,8 +35,14 @@ Route::post('/ingresar_materia','MateriaController@ingresarMateria');
 Route::post('/modificar_materia','MateriaController@modificarMateria');
 Route::post('/eliminar_materia','MateriaController@eliminarMateria');
 
+Route::get('/configuracion','ConfiguracionController@getConfiguraciones');
+Route::post('/modificar_terminos_condiciones','ConfiguracionController@modificarTerminosCondiciones');
 
 
+Route::get('/dashboard',function(){
+    return view('dashboard');
+});
 
 //Auth::routes();
+
 //Route::get('/home', 'HomeController@index')->name('home');

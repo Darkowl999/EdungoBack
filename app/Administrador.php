@@ -2,20 +2,24 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Administrador extends Model
+class Administrador extends Authenticatable
 {
+    use Notifiable;
 
-    protected $table ='administrador';
-
+    protected $table='administrador';
+    protected $guard='administrador';
+    
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'email', 'password','created_at','updated_at'
+        'name', 'email', 'password',
     ];
 
     /**
@@ -24,7 +28,16 @@ class Administrador extends Model
      * @var array
      */
     protected $hidden = [
-        'password'
+        'password', 'remember_token',
     ];
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }
+

@@ -1,3 +1,6 @@
+@extends('layouts.header')
+
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,34 +19,34 @@
        }
     
     
-       input{
+       .input{
         font-size:30px;
         margin-top: 15px;
         margin-bottom: 15px;
       }
 
-        body{
+        .body{
         font-size:30px;
           margin-top: 15px;
         margin-bottom: 15px;
         background-color: rgb(220, 255, 213);
         }
     
-        select{
+        .select{
         font-size:30px;
         margin-top: 15px;
         margin-bottom: 15px;
         background-color:rgb(187, 255, 190);
         }
         
-        a{
+        .a{
             font-size:50px;
             font-style: bold;
             margin-top: 15px;
             margin-bottom: 15px;
         }
 
-        b{
+        .b{
          font-size:15px;
         }
 
@@ -51,15 +54,20 @@
 
 
 </head>
-<body>
-    <center>
+<body class="body">
+    
 
-        <a class="">Administrar categorias</a>
+        <div class="container-fluid">
+            <h1 class="mt-4">Categorias</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Administrar categorias</li>
+            </ol>
+        </div>
         <br>
-
+    <center>
         <form action="/edungo/public/ingresar_categoria" method="POST">
             {{ csrf_field() }}
-            <input type="text" name="nombreCategoriaIngresada" placeholder="Nombre categoria">
+            <input type="text" class="input" name="nombreCategoriaIngresada" placeholder="Nombre categoria">
             <input class="button" type="submit" value="Ingresar categoria" >
         </form>
 
@@ -67,8 +75,8 @@
             
         <form action="/edungo/public/modificar_categoria" method="POST">
             {{ csrf_field() }}
-                <b>Nombre categoria</b>
-                <select id="categorias" name="nombreCategoriaModificada" >
+                <b class="b">Nombre categoria</b>
+                <select class="select" id="categorias" name="nombreCategoriaModificada" >
                     <?php
                         foreach ($categorias as $categoria){
                     ?>
@@ -78,7 +86,7 @@
                     ?>
                 </select>
                 <br>
-            <input type="text" name="nuevoNombreModificado" placeholder="Nuevo nombre">
+            <input type="text" class="input" name="nuevoNombreModificado" placeholder="Nuevo nombre">
             <input class="button" type="submit" value="Modificar categoria">
         </form>
 
@@ -86,8 +94,8 @@
 
         <form action="/edungo/public/eliminar_categoria" method="POST">
             {{ csrf_field() }}
-            <b>Nombre categoria</b>
-            <select id="categorias" name="nombreCategoriaEliminada" >
+            <b class="b">Nombre categoria</b>
+            <select id="categorias" class="select" name="nombreCategoriaEliminada" >
                 <?php
                     foreach ($categorias as $categoria){
                 ?>
@@ -96,6 +104,7 @@
                     }
                 ?>
             </select>
+            <br>
             <input class="button" type="submit" value="eliminar categoria">
         </form>
 
@@ -103,3 +112,4 @@
     
 </body>
 </html>
+@endsection

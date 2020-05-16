@@ -15,7 +15,7 @@ class CreateMateriaTable extends Migration
     {
         Schema::create('materia', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->unique();
+            $table->string('nombre');
             $table->timestamps();
             $table->unsignedBigInteger('id_area');
             $table->foreign('id_area')->references('id')->on('area')->onDelete('cascade')->onUpdate('cascade');

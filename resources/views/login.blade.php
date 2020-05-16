@@ -275,6 +275,7 @@ input[type=text]:placeholder,input[type=password]:placeholder {
 </head>
 <body>
 
+
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -293,8 +294,20 @@ input[type=text]:placeholder,input[type=password]:placeholder {
         <!-- Login Form -->
         <form action="/edungo/public/login" method="POST">
           {{ csrf_field() }}
-          <input type="text" id="email" class="fadeIn second" name="email" placeholder="e-mail" required>
+        <input type="text" id="email" class="fadeIn second" value="{{old('email')}}" name="email" placeholder="e-mail" required>
+
+            <br>
+              <span class="help-block">
+                {{ $errors->first('email') }}
+              </span>
+           
           <input type="password" id="password" class="fadeIn third" name="password" placeholder="contraseña" required>
+
+              <br>
+                <span class="help-block">
+                  {{ $errors->first('password') }}
+                </span>
+
           <input type="submit" class="fadeIn fourth" value="Iniciar sesion">
         </form>
     

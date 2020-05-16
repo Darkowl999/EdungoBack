@@ -9,6 +9,10 @@ use App\Area;
 
 class MateriaController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth:administrador');
+    }
+
     public function getMaterias(){
         $Materias=Materia::get();
         $Areas=Area::get();
