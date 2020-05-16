@@ -13,7 +13,7 @@ class ApiPersonaController extends Controller
     }
 
     public function index(Request $request){
-        return Persona::where('email',$request->email)->get();
+        return Persona::all();
     }
 
     public function store(Request $request){
