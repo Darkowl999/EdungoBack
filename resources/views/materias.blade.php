@@ -64,7 +64,7 @@
     <center>
         <br>
 
-        <form action="/edungo/public/ingresar_materia" method="POST">
+        <form action="/ingresar_materia" method="POST">
             {{ csrf_field() }}
             <b>Nombre Area</b>
             <select id="Areas" class="select" name="idAreaIngresada" >
@@ -83,7 +83,7 @@
 
             <br><hr>
             
-        <form action="/edungo/public/modificar_materia" method="POST">
+        <form action="/modificar_materia" method="POST">
             {{ csrf_field() }}
 
             <b class="b">Nombre Area</b>
@@ -114,7 +114,7 @@
 
             <br><hr>
 
-        <form action="/edungo/public/eliminar_materia" method="POST">
+        <form action="/eliminar_materia" method="POST">
             {{ csrf_field() }}
             <b>Nombre Materia</b>
             <select id="Materias" class="select" name="nombreMateriaEliminada" >

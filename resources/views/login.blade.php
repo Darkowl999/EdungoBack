@@ -292,7 +292,7 @@ input[type=text]:placeholder,input[type=password]:placeholder {
         </div>
     
         <!-- Login Form -->
-        <form action="/edungo/public/login" method="POST">
+        <form action="/login" method="POST">
           {{ csrf_field() }}
         <input type="text" id="email" class="fadeIn second" value="{{old('email')}}" name="email" placeholder="e-mail" required>
 
