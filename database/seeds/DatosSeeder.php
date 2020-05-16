@@ -16,14 +16,16 @@ class DatosSeeder extends Seeder
     {
 
         DB::table('categoria')->insert([
+        [
             'nombre' => 'Universitario',
         ],
         [
             'nombre' => 'Colegial',
         ]
+        ]
         );
 
-        DB::table('area')->insert(
+        DB::table('area')->insert([
         [
             'nombre' => 'Ingenieria',
             'id_categoria'=> '1'
@@ -36,9 +38,10 @@ class DatosSeeder extends Seeder
             'nombre' => 'Secundaria',
             'id_categoria'=>'2'
         ]
+        ]
         );
 
-        DB::table('materia')->insert(
+        DB::table('materia')->insert([
             [
             'nombre' => 'Calculo 1',
             'id_area'=>'1'
@@ -50,7 +53,8 @@ class DatosSeeder extends Seeder
                 [
                     'nombre' => 'Matematicas',
                     'id_area'=>'3'
-                    ],
+                    ]
+            ]
     );
 
     }
