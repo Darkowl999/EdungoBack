@@ -30,22 +30,27 @@ class ApiPersonaController extends Controller
     public function store(Request $request)
     {
 
-        if ($this->validator($request)){
+
+        $validatedData = $request->validate([
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:administrador'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        if ($validatedData){
             return Administrador::create([
                 'email' => $request['email'],
                 'password' => Hash::make($request['password']),
             ]);
+        }else{
+            return "error 500 :v con los datos";
         }
-
-
 
     }
 
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:administrador'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+           
         ]);
     }
 
