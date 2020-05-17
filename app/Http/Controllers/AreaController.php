@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Area;
 use App\Categoria;
+use Illuminate\Support\Facades\DB;
 
 class AreaController extends Controller
 {
@@ -13,7 +14,7 @@ class AreaController extends Controller
     }
 
     public function getAreas(){
-        $Areas=Area::select('area.id,area.nombre as nombreArea,categoria.nombre as nombreCategoria')
+        $Areas=DB::select('area.id,area.nombre as nombreArea,categoria.nombre as nombreCategoria')->table('area')
         ->join('categoria','area.id_categoria','=','categoria.id')->get();
         $Categorias=Categoria::get();
         return view('areas',compact('Areas'),compact('Categorias'));
