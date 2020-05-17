@@ -14,7 +14,7 @@ class AreaController extends Controller
     }
 
     public function getAreas(){
-        $Areas=DB::select('select area.id,area.nombre as nombreArea,categoria.nombre as nombreCategoria
+        return DB::select('select area.id,area.nombre as nombreArea,categoria.nombre as nombreCategoria
          from area,categoria
          where area.id_categoria=categoria.id');
         //$Areas=DB::table('area')
