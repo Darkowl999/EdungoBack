@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Administrador;
+use App\Persona;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -44,12 +44,14 @@ class ApiPersonaController extends Controller
             return response()->json('La confirmacion de la contraseña es incorrecta',500);  
         }
 
-        Persona::insert('insert into persona (nombre,apellido,nombre_usuario,telefono,sexo,email,direccion,fecha_nacimiento
+       /* Persona::insert('insert into persona (nombre,apellido,nombre_usuario,telefono,sexo,email,direccion,fecha_nacimiento
         ,password) values (?,?,?,?,?,?,?,?,?)', [$request->nombre,$request->apellido,$request->nombre_usuario
         ,$request->telefono,$request->sexo,$request->email,$request->direccion,$request->fecha_nacimiento
         ,$request->password]);
+        */
 
-            return response()->json('Datos insertados correctamente :v',200);
+        $persona=Persona::create($request->all());
+            return response()->json('Datos insertados correctamente :v',$persona,200);
     }
 
 
