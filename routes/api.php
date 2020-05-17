@@ -24,4 +24,5 @@ Route::apiResource('materias','ApiMateriaController');
 
 Route::apiResource('configuraciones','ApiConfiguracionController');
 
-Route::apiResource('registrarPersona','ApiPersonaController');
+Route::post('registrarPersona','ApiPersonaController@store');
+
