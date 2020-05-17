@@ -42,21 +42,5 @@ class ApiPersonaController extends Controller
     }
 
 
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:administrador'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
-    
-    
-    protected function create(array $data)
-    {
-        return Administrador::create([
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-    }
 
 }
