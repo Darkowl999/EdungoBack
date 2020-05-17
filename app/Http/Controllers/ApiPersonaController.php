@@ -58,11 +58,11 @@ class ApiPersonaController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Administrador
      */
     protected function create(array $data)
     {
-        return User::create([
+        return Administrador::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
