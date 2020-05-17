@@ -19,7 +19,7 @@ class ApiEstudianteController extends Controller
                 return response()->json($estudianteExists,200);
             }
         }else{
-            return response()->json('Error no existe esa persona',200);
+            return response()->json('Error no existe esa persona',500);
         }
     }
 }
