@@ -20,33 +20,34 @@ class ApiPersonaController extends Controller
     }
 
    /* public function store(Request $request){
-        return Persona::insert('insert into persona (nombre,apellido,nombre_usuario,telefono,sexo,email,direccion,fecha_nacimiento
-            ,password) values (?,?,?,?,?,?,?,?,?)', [$request->nombre,$request->apellido,$request->nombre_usuario
-            ,$request->telefono,$request->sexo,$request->email,$request->direccion,$request->fecha_nacimiento
-            ,$request->password])->get();
+
     }*/
 
     public function store(Request $request)
     {
 
 
-        $validatedData = $request->validate([
+      /*  $validatedData = $request->validate([
             'email' => ['required', 'string', 'email', 'max:255', 'unique:administrador'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+        
+
+        */
 
 
-            return Administrador::create([
-                'email' => $request['email'],
-                'password' => Hash::make($request['password']),
-            ]);
+       /* return Persona::insert('insert into persona (nombre,apellido,nombre_usuario,telefono,sexo,email,direccion,fecha_nacimiento
+        ,password) values (?,?,?,?,?,?,?,?,?)', [$request->nombre,$request->apellido,$request->nombre_usuario
+        ,$request->telefono,$request->sexo,$request->email,$request->direccion,$request->fecha_nacimiento
+        ,$request->password]);
+    */
+        
+        
+    return Administrador::insert([
+        'email' => $request['email'],
+        'password' => Hash::make($request['password']),
+    ]);
 
-
-    }
-
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [ ]);
     }
 
 
