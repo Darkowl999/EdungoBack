@@ -13,7 +13,8 @@ class AreaController extends Controller
     }
 
     public function getAreas(){
-        $Areas=Area::get();
+        $Areas=Area::select('area.id,area.nombre as nombreArea,categoria.nombre as nombreCategoria')
+        ->join('categoria','area.id_categoria','=','categoria.id')->get();
         $Categorias=Categoria::get();
         return view('areas',compact('Areas'),compact('Categorias'));
     }
