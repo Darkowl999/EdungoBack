@@ -57,15 +57,15 @@ class ApiPersonaController extends Controller
         "password"=>Hash::make($request->password)
     ];
 
-        Persona::create($datos);
+        $persona=Persona::create($datos);
 
-        return response()->json('Datos insertados correctamente :v',200);
+        return response()->json($persona,200);
     }
 
 
     public function login(Request $request){
-        $persona=DB::table('persona')->where('nombre_usuario','=',$request->nombre_usuario)->first();
-
+        $personaConsulta=DB::table('persona')->where('nombre_usuario','=',$request->nombre_usuario)->first();
+        $persona=Persona::where('nombre_usuario',$request->nombre_usuario)->first();
         if (Hash::check($request->password, $persona->password)){
             return response()->json($persona,200); 
         }
