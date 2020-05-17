@@ -31,4 +31,4 @@ Route::get('areas','Apis\ApiAreaController@index');    //para obtener las areas 
 Route::get('materias','Apis\ApiMateriaController@index'); //para obtener las materias de un area en especifico requiere (id_area)
 Route::get('configuraciones','Apis\ApiConfiguracionController@index'); //muestra las configuraciones como terminos y condiciones
 
-//route::post('auxiliaresMateria','');
+route::get('auxiliaresMateria','Apis\ApiMateriaAuxiliarController@getAuxiliaresMateria');  //muestra todos los auxiliares de una materia requiere (id_materia)
