@@ -27,10 +27,7 @@ class ApiPersonaController extends Controller
     {
 
 
-      /*  $validatedData = $request->validate([
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:administrador'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+      /*  
         
 
         */
@@ -42,11 +39,17 @@ class ApiPersonaController extends Controller
         ,$request->password]);
     */
         
-        
-    return Administrador::insert([
-        'email' => $request['email'],
-        'password' => Hash::make($request['password']),
+    $validatedData = $request->validate([
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:administrador'],
+        'password' => ['required', 'string', 'min:8'],
     ]);
+        if ($validatedData){
+            return Administrador::insert([
+                'email' => $request['email'],
+                'password' => Hash::make($request['password']),
+            ])->get();
+        }
+            return "error 500 :v ";
 
     }
 
