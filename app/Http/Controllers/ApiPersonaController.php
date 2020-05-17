@@ -30,11 +30,14 @@ class ApiPersonaController extends Controller
     public function store(Request $request)
     {
 
+        if ($this->validator($request)){
+            return Administrador::create([
+                'email' => $request['email'],
+                'password' => Hash::make($request['password']),
+            ]);
+        }
 
-        return Administrador::create([
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-        ]);
+
 
     }
 
