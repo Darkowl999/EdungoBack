@@ -20,6 +20,7 @@ Route::post('registrarPersona','ApiPersonaController@store');
 Route::post('loginPersona','ApiPersonaController@login');
 
 route::post('loginPerfilEstudiante','ApiEstudianteController@loginPerfilEstudiante');
+route::get('personas','ApiPersonaController@index');  //para hacer pruebas
 
 //route::post('loginPerfilAuxiliar','');
 //route::post('registrarAuxiliar','');
