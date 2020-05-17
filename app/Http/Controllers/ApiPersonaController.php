@@ -53,7 +53,7 @@ class ApiPersonaController extends Controller
         */
 
         $persona=Persona::create($request->all());
-            return response()->json('Datos insertados correctamente :v',$persona,200);
+            return response()->json('Datos insertados correctamente :v',200);
     }
 
 
