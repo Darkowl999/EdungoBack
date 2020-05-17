@@ -13,7 +13,17 @@ class Califica extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('califica', function (Blueprint $table) {
+            $table->id();
+            $table->string('comentario',500);
+            $table->UnsignedInteger('estrellas');
+            $table->boolean('favorito');
+            $table->unsignedBigInteger('id_estudiante')->unique();
+            $table->unsignedBigInteger('id_auxiliar')->unique();
+            $table->foreign('id_estudiante')->references('id_persona')->on('estudiante')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_auxiliar')->references('id_persona')->on('auxiliar')->onDelete('cascade')->onUpdate('cascade');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +33,6 @@ class Califica extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('califica');
     }
 }

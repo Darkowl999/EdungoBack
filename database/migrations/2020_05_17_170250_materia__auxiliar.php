@@ -13,7 +13,15 @@ class MateriaAuxiliar extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('materia_auxiliar', function (Blueprint $table) {
+            $table->id();
+            $table->boolean('esAuxiliarOficial');
+            $table->unsignedBigInteger('id_materia')->unique();
+            $table->unsignedBigInteger('id_auxiliar')->unique();
+            $table->foreign('id_materia')->references('id')->on('materia')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_auxiliar')->references('id_persona')->on('auxiliar')->onDelete('cascade')->onUpdate('cascade');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +31,6 @@ class MateriaAuxiliar extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('materia_auxiliar');
     }
 }
