@@ -14,9 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:api')->get('/user', function (Request $request) {  return $request->user(); });
+
+Route::post('registrarPersona','ApiPersonaController@store');
+Route::post('loginPersona','ApiPersonaController@login');
+
+route::post('loginPerfilEstudiante','ApiEstudianteController@loginPerfilEstudiante');
+
+//route::post('loginPerfilAuxiliar','');
+//route::post('registrarAuxiliar','');
 
 Route::apiResource('categorias','ApiCategoriaController');
 Route::apiResource('areas','ApiAreaController');
@@ -24,5 +30,4 @@ Route::apiResource('materias','ApiMateriaController');
 
 Route::apiResource('configuraciones','ApiConfiguracionController');
 
-Route::post('registrarPersona','ApiPersonaController@store');
-Route::post('loginPersona','ApiPersonaController@login');
+//route::post('auxiliaresMateria','');

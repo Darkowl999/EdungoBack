@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\DB;
 class ApiPersonaController extends Controller
 {
 
-
     public function __construct(){
         $this->middleware('guest');
     }
