@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Persona;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\DB;
 
 class ApiPersonaController extends Controller
 {
@@ -64,12 +64,12 @@ class ApiPersonaController extends Controller
 
 
     public function login(Request $request){
-        $persona=Persona::where('nombre_usuario','=',$request->nombre_usuario)->get();
+        $persona=DB::table('persona')->where('nombre_usuario','=',$request->nombre_usuario)->get();
 
         if (Hash::check($request->password, $persona->password)){
             return response()->json('Login correcto',200); 
         }
-        
+
         if (!is_null($persona)){
             return response()->json($persona,200);  
         }
