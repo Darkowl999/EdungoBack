@@ -29,14 +29,12 @@ class ApiPersonaController extends Controller
     public function store(Request $request)
     {
         if (validator($request)){
-            return 200;
             $this->create($request);
-        }else{
-            return 0;
         }
+        return 0;
     }
 
-    protected function validator(Request $data)
+    protected function validator(array $data)
     {
         return Validator::make($data, [
             'email' => ['required', 'string', 'email', 'max:255', 'unique:administrador'],
@@ -44,7 +42,7 @@ class ApiPersonaController extends Controller
         ]);
     }
 
-    protected function create(Request $data)
+    protected function create(array $data)
     {
         return Administrador::create([
             'email' => $data['email'],
