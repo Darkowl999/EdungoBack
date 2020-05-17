@@ -30,8 +30,8 @@ class ApiPersonaController extends Controller
         ,$request->telefono,$request->sexo,$request->email,$request->direccion,$request->fecha_nacimiento
         ,$request->password]);
         */
-        $email=Persona::find($request->email);
-        $nombre_usuario=Persona::find($request->nombre_usuario);
+        $email=Persona::select('email',$request->email)->first();
+        $nombre_usuario=Persona::select('nombre_usuario',$request->nombre_usuario)->first();
 
         if (!is_null($email)){
             return response()->json('Ya existe este email',500);
