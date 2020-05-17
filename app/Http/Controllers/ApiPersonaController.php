@@ -2,20 +2,14 @@
 
 namespace App\Http\Controllers;
 
-//namespace App\Http\Controllers\Auth;
-
 use Illuminate\Http\Request;
 use App\Administrador;
 
-//use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+
 
 class ApiPersonaController extends Controller
 {
-    use RegistersUsers;
+
 
     public function __construct(){
         $this->middleware('guest');
@@ -34,18 +28,14 @@ class ApiPersonaController extends Controller
 
     public function store(Request $request)
     {
-        $this->register($request);
-
-        return 0;
+        if (validator($request)){
+            return 200;
+            $this->create();
+        }else{
+            return 0;
+        }
     }
 
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -54,12 +44,6 @@ class ApiPersonaController extends Controller
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Administrador
-     */
     protected function create(array $data)
     {
         return Administrador::create([
