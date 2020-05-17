@@ -46,10 +46,18 @@ class ApiPersonaController extends Controller
             return response()->json('La confirmacion de la contraseña es incorrecta',500);  
         }
 
-        Persona::insert('insert into persona (nombre,apellido,nombre_usuario,telefono,sexo,email,direccion,fecha_nacimiento
-        ,password) values (?,?,?,?,?,?,?,?,?)', [$request->nombre,$request->apellido,$request->nombre_usuario
-        ,$request->telefono,$request->sexo,$request->email,$request->direccion,$request->fecha_nacimiento
-        ,Hash::make($request->password)]);
+        $datos=["nombre"=>$request->nombre,
+        "apellido"=>$request->apellido,
+        "nombre_usuario" =>$request->nombre_usuario,
+        "telefono"=>$request->telefono,
+        "sexo"=>$request->sexo,
+        "email"=>$request->email,
+        "direccion"=>$request->direccion,
+        "fecha_nacimiento"=>$request->fecha_nacimiento,
+        "password"=>Hash::make($request->password)
+    ];
+
+        Persona::create($datos);
 
         return response()->json('Datos insertados correctamente :v',200);
     }
