@@ -34,9 +34,9 @@ class ApiPersonaController extends Controller
 
     public function store(Request $request)
     {
-       if ($this->validator($request->all())){
+        //$this->validator($request->all());
         $this->create($request->all());
-       }
+       
 
         return 0;
     }
