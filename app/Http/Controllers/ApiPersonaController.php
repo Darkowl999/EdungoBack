@@ -44,10 +44,11 @@ class ApiPersonaController extends Controller
         'password' => ['required', 'string', 'min:8'],
     ]);
         if ($validatedData){
-            return Administrador::insert([
+             Administrador::insert([
                 'email' => $request['email'],
                 'password' => Hash::make($request['password']),
-            ])->get();
+            ]);
+            return "datos insertados correctamente";
         }
             return "error 500 :v ";
 
