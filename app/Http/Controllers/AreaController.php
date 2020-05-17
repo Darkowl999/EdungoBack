@@ -14,8 +14,9 @@ class AreaController extends Controller
     }
 
     public function getAreas(){
-        $Areas=DB::select('area.id,area.nombre as nombreArea,categoria.nombre as nombreCategoria')->table('area')
-        ->join('categoria','area.id_categoria','=','categoria.id')->get();
+        $Areas=DB::table('area')
+        ->join('categoria','area.id_categoria','=','categoria.id')
+        ->select('area.id,area.nombre as nombreArea,categoria.nombre as nombreCategoria')->get();
         $Categorias=Categoria::get();
         return view('areas',compact('Areas'),compact('Categorias'));
     }
