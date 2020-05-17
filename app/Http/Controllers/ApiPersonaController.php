@@ -64,7 +64,12 @@ class ApiPersonaController extends Controller
 
 
     public function login(Request $request){
-        $persona=Persona::where([['nombre_usuario',$request->nombre_usuario],['password',$request->password]])->get();
+        $persona=Persona::where('nombre_usuario','=',$request->nombre_usuario)->get();
+
+        if (Hash::check($request->password, $persona->password)){
+            return response()->json('Login correcto',200); 
+        }
+        
         if (!is_null($persona)){
             return response()->json($persona,200);  
         }

@@ -5,11 +5,7 @@
 <div>
 
 <?php 
-    if (Auth::guard("administrador")->check()){
-        echo 'true';
-    }else{
-        echo 'false';
-    }
+
 
     ?>
 
