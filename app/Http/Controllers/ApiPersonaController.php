@@ -30,7 +30,7 @@ class ApiPersonaController extends Controller
     {
         if (validator($request)){
             return 200;
-            $this->create();
+            $this->create($request);
         }else{
             return 0;
         }
