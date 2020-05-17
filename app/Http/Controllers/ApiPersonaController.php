@@ -40,7 +40,9 @@ class ApiPersonaController extends Controller
             return response()->json('Ya existe este nombre de usuario',500);  
         }
 
-        if ($request->password!=$request->confirm_password){
+        if ($request->password==$request->confirm_password){
+            
+        }else{
             return response()->json('La confirmacion de la contraseña es incorrecta',500);  
         }
 
