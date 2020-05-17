@@ -28,10 +28,15 @@ class ApiPersonaController extends Controller
 
     public function store(Request $request)
     {
-        if (validator($request)){
-            $this->create($request);
+        $validatedData = $request->validate([
+            'title' => 'required|unique:posts|max:255',
+            'body' => 'required',
+        ]);
+
+        if ($validatedData){
+            create($request);
         }
-        return 0;
+
     }
 
     protected function validator(array $data)
