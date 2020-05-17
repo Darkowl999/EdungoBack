@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Administrador;
 
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class ApiPersonaController extends Controller
 {
@@ -33,7 +34,7 @@ class ApiPersonaController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
 
-        if ($validatedData){
+        if (validator($request)){
             create($request);
         }
 
