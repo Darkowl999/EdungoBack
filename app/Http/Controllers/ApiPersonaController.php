@@ -29,8 +29,8 @@ class ApiPersonaController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'title' => 'required|unique:posts|max:255',
-            'body' => 'required',
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:administrador'],
+            'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
 
         if ($validatedData){
