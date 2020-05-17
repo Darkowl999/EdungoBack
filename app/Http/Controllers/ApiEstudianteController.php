@@ -13,7 +13,7 @@ class ApiEstudianteController extends Controller
         if (!is_null($persona)){
             $estudianteExists=Estudiante::where('id_persona','=',$request->id_persona)->first();
             if (is_null($estudianteExists)){
-                $estudiante=Estudiante::create($request);
+                $estudiante=Estudiante::create($request->get());
                 return response()->json($estudiante,200);
             }else{
                 return response()->json($estudianteExists,200);
