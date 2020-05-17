@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Administrador;
-
 use Illuminate\Support\Facades\Hash;
 
 
@@ -49,9 +48,7 @@ class ApiPersonaController extends Controller
 
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-           
-        ]);
+        return Validator::make($data, [ ]);
     }
 
 
