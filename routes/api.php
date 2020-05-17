@@ -25,4 +25,4 @@ Route::apiResource('materias','ApiMateriaController');
 Route::apiResource('configuraciones','ApiConfiguracionController');
 
 Route::post('registrarPersona','ApiPersonaController@store');
-
+Route::post('loginPersona','ApiPersonaController@login');

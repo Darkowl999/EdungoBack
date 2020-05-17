@@ -63,4 +63,13 @@ class ApiPersonaController extends Controller
     }
 
 
+    public function login(Request $request){
+        $persona=Persona::where([['nombre_usuario',$request->nombre_usuario],['password',$request->password]])->get();
+        if (!is_null($persona)){
+            return response()->json($persona,200);  
+        }
+        return response()->json('Los datos introducidos son incorrectos',500);  
+    }
+
+
 }
