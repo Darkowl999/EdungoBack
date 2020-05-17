@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ApiPersonaController extends Controller
 {
-   // use RegistersUsers;
+    use RegistersUsers;
 
     public function __construct(){
         $this->middleware('guest');
@@ -34,7 +34,7 @@ class ApiPersonaController extends Controller
 
     public function store(Request $request)
     {
-        //$this->validator($request->all());
+        $this->validator($request->all())->validate();
         $this->create($request->all());
        
 
