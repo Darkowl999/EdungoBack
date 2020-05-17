@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Administrador;
 
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+
 
 class ApiPersonaController extends Controller
 {
@@ -29,14 +29,12 @@ class ApiPersonaController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:administrador'],
-            'password' => ['required', 'string', 'min:8', 'confirmed']
-        ]);
 
-        if (validator($request)){
-            create($request);
-        }
+
+        return Administrador::create([
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
 
     }
 
@@ -48,12 +46,5 @@ class ApiPersonaController extends Controller
         ]);
     }
 
-    protected function create(array $data)
-    {
-        return Administrador::create([
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-    }
 
 }
