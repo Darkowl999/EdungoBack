@@ -38,7 +38,7 @@ class AreaController extends Controller
         $nombreArea=$request->nombreAreaModificada;
         $nuevoNombre=$request->nuevoNombreModificado;
         $idCategoria=$request->idCategoriaModificada;
-        $nombreAreaExists=Area::where('nombre',$nombreArea)->first();
+        $nombreAreaExists=Area::where('nombre',$nuevoNombre)->first();
 
         if (!is_null($idCategoria)){
             if (is_null($nuevoNombre)){

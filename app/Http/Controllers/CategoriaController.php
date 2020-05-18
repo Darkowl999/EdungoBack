@@ -36,7 +36,7 @@ class CategoriaController extends Controller
 
         $nombreCategoria=$request->nombreCategoriaModificada;
         $nuevoNombre=$request->nuevoNombreModificado;
-        $nombreCategoriaExists=Categoria::where('nombre',$nombreCategoria)->first();
+        $nombreCategoriaExists=Categoria::where('nombre',$nuevoNombre)->first();
         if (!is_null($nuevoNombre) && is_null($nombreCategoriaExists)){
         Categoria::where('nombre',$nombreCategoria)->update(['nombre'=>$nuevoNombre]);
         }
