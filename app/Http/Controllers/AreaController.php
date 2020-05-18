@@ -52,7 +52,7 @@ class AreaController extends Controller
 
         $idArea=$request->idAreaEliminada;
         if (!is_null($idArea)){
-            Area::where('nombre',$idArea)->delete();
+            Area::where('id',$idArea)->delete();
         }
 
         return redirect('administrar_areas');

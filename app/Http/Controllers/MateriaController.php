@@ -50,8 +50,8 @@ class MateriaController extends Controller
     public function eliminarMateria(Request $request){
 
         $idMateria=$request->idMateriaEliminada;
-        if (!is_null($nombreMateria)){
-        Materia::where('nombre',$idMateria)->delete();
+        if (!is_null($idMateria)){
+        Materia::where('id',$idMateria)->delete();
         }
         return redirect('administrar_materias');
     }
