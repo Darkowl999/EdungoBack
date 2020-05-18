@@ -17,9 +17,6 @@ class AreaController extends Controller
         $Areas=DB::select('select area.id,area.nombre as nombreArea,categoria.nombre as nombreCategoria
          from area,categoria
          where area.id_categoria=categoria.id');
-        //$Areas=DB::table('area')
-        //->join('categoria','area.id_categoria','=','categoria.id')
-        //->select('area.id,area.nombre as nombreArea,categoria.nombre as nombreCategoria')->get();
         $Categorias=Categoria::get();
         return view('areas',compact('Areas'),compact('Categorias'));
     }
@@ -29,7 +26,9 @@ class AreaController extends Controller
         $nombreArea=$request->nombreAreaIngresada;
         $idCategoria=$request->idCategoriaIngresada;
 
-        Area::insert(['nombre'=> $nombreArea ,'id_categoria'=>$idCategoria]);
+        if (!is_null($nombreArea) && !isnull($idCategoria)){
+            Area::insert(['nombre'=> $nombreArea ,'id_categoria'=>$idCategoria]);
+        }
 
         return redirect('administrar_areas');
     }
@@ -39,9 +38,12 @@ class AreaController extends Controller
         $idArea=$request->idAreaModificada;
         $nuevoNombre=$request->nuevoNombreModificado;
         $idCategoria=$request->idCategoriaModificada;
+        if (is_null($nuevoNombre)){
+            Area::where('id',$idArea)->update(['id_categoria'=>$idCategoria]);
+        }else{
+            Area::where('id',$idArea)->update(['nombre'=>$nuevoNombre,'id_categoria'=>$idCategoria]);
+        }
         
-        Area::where('id',$idArea)->update(['nombre'=>$nuevoNombre,'id_categoria'=>$idCategoria]);
-
         return redirect('administrar_areas');
     }
 
