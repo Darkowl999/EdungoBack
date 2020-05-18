@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Categoria;
 
+
 class CategoriaController extends Controller
 {
     public function __construct(){
@@ -24,7 +25,8 @@ class CategoriaController extends Controller
     public function ingresarCategoria(Request $request){
 
         $nombreCategoria=$request->nombreCategoriaIngresada;
-        if (!is_null($nombreCategoria)){
+        $nombreCategoriaExists=Categoria::where('nombre',$nombreCategoria)->first();
+        if (!is_null($nombreCategoria) && is_null($nombreCategoriaExists)){
         Categoria::insert(['nombre'=> $nombreCategoria ]);
         }
         return redirect('administrar_categorias');
@@ -34,7 +36,8 @@ class CategoriaController extends Controller
 
         $nombreCategoria=$request->nombreCategoriaModificada;
         $nuevoNombre=$request->nuevoNombreModificado;
-        if (!is_null($nuevoNombre)){
+        $nombreCategoriaExists=Categoria::where('nombre',$nombreCategoria)->first();
+        if (!is_null($nuevoNombre) && is_null($nombreCategoriaExists)){
         Categoria::where('nombre',$nombreCategoria)->update(['nombre'=>$nuevoNombre]);
         }
         return redirect('administrar_categorias');

@@ -97,11 +97,11 @@
                 </select>
                 <br>
                 <b class="b">Nombre Area</b>
-                <select id="Areas" class="select" name="idAreaModificada" >
+                <select id="Areas" class="select" name="nombreAreaModificada" >
                     <?php
                         foreach ($Areas as $Area){
                     ?>
-                    <option name="idAreaModificada" value="<?php echo $Area->id; ?>" ><?php echo $Area->nombrearea."/".$Area->nombrecategoria; ?></option>
+                    <option name="nombreAreaModificada" value="<?php echo $Area->nombrearea; ?>" ><?php echo $Area->nombrearea."/".$Area->nombrecategoria; ?></option>
                     <?php 
                         }
                     ?>
@@ -116,11 +116,11 @@
         <form action="/eliminar_area" method="POST">
             {{ csrf_field() }}
             <b>Nombre Area</b>
-            <select id="Areas" class="select" name="idAreaEliminada" >
+            <select id="Areas" class="select" name="nombreAreaEliminada" >
                 <?php
                     foreach ($Areas as $Area){
                 ?>
-                <option name="idAreaEliminada" value="<?php echo $Area->id; ?>" ><?php echo $Area->nombrearea."/".$Area->nombrecategoria ?></option>
+                <option name="nombreAreaEliminada" value="<?php echo $Area->nombrearea; ?>" ><?php echo $Area->nombrearea."/".$Area->nombrecategoria ?></option>
                 <?php 
                     }
                 ?>

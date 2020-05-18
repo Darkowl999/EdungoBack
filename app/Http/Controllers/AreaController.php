@@ -25,8 +25,8 @@ class AreaController extends Controller
 
         $nombreArea=$request->nombreAreaIngresada;
         $idCategoria=$request->idCategoriaIngresada;
-
-        if (!is_null($nombreArea) && !isnull($idCategoria)){
+        $nombreAreaExists=Area::where('nombre',$nombreArea)->first();
+        if (!is_null($nombreArea) && !isnull($idCategoria) && is_null($nombreAreaExists)){
             Area::insert(['nombre'=> $nombreArea ,'id_categoria'=>$idCategoria]);
         }
 
@@ -35,14 +35,16 @@ class AreaController extends Controller
 
     public function modificarArea(Request $request){
 
-        $idArea=$request->idAreaModificada;
+        $nombreArea=$request->nombreAreaModificada;
         $nuevoNombre=$request->nuevoNombreModificado;
         $idCategoria=$request->idCategoriaModificada;
+        $nombreAreaExists=Area::where('nombre',$nombreArea)->first();
+
         if (!is_null($idCategoria)){
             if (is_null($nuevoNombre)){
-                Area::where('id',$idArea)->update(['id_categoria'=>$idCategoria]);
-            }else{
-                Area::where('id',$idArea)->update(['nombre'=>$nuevoNombre,'id_categoria'=>$idCategoria]);
+                Area::where('nombre',$nombreArea)->update(['id_categoria'=>$idCategoria]);
+            }else if(is_null($nombreAreaExists)){
+                Area::where('nombre',$nombreArea)->update(['nombre'=>$nuevoNombre,'id_categoria'=>$idCategoria]);
             }
         }
         return redirect('administrar_areas');
@@ -50,11 +52,10 @@ class AreaController extends Controller
 
     public function eliminarArea(Request $request){
 
-        $idArea=$request->idAreaEliminada;
-        if (!is_null($idArea)){
-            Area::where('id',$idArea)->delete();
+        $nombreArea=$request->nombreAreaEliminada;
+        if (!is_null($nombreArea)){
+            Area::where('nombre',$nombreArea)->delete();
         }
-
         return redirect('administrar_areas');
     }
 
