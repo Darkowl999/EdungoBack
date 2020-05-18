@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Materia;
 use App\Area;
+use Illuminate\Support\Facades\DB;
 
 class MateriaController extends Controller
 {
@@ -14,7 +15,9 @@ class MateriaController extends Controller
     }
 
     public function getMaterias(){
-        $Materias=Materia::get();
+        $Materias=DB::select('select materia.id,materia.nombre as nombreMateria,area.nombre as nombreArea
+        from materia,area
+        where materia.id_area=area.id');
         $Areas=Area::get();
         return view('materias',compact('Materias'),compact('Areas'));
     }
@@ -23,29 +26,33 @@ class MateriaController extends Controller
 
         $nombreMateria=$request->nombreMateriaIngresada;
         $idArea=$request->idAreaIngresada;
-
+        if (!is_null($nombreMateria) && !is_null($idArea)){
         Materia::insert(['nombre'=> $nombreMateria ,'id_area'=>$idArea]);
-
+        }
         return redirect('administrar_materias');
     }
 
     public function modificarMateria(Request $request){
 
-        $nombreMateria=$request->nombreMateriaModificada;
+        $idMateria=$request->idMateriaModificada;
         $nuevoNombre=$request->nuevoNombreModificado;
         $idArea=$request->idAreaModificada;
-
-        Materia::where('nombre',$nombreMateria)->update(['nombre'=>$nuevoNombre,'id_area'=>$idArea]);
-
+        if (!is_null($idArea)){
+            if (is_null($nuevoNombre)){
+                Materia::where('id',$idMateria)->update(['id_area'=>$idArea]);
+            }else{
+                Materia::where('id',$idMateria)->update(['nombre'=>$nuevoNombre,'id_area'=>$idArea]);
+            }
+        }
         return redirect('administrar_materias');
     }
 
     public function eliminarMateria(Request $request){
 
-        $nombreMateria=$request->nombreMateriaEliminada;
-
-        Materia::where('nombre',$nombreMateria)->delete();
-
+        $idMateria=$request->idMateriaEliminada;
+        if (!is_null($nombreMateria)){
+        Materia::where('nombre',$idMateria)->delete();
+        }
         return redirect('administrar_materias');
     }
 
