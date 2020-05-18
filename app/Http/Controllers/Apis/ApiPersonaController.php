@@ -73,7 +73,7 @@ class ApiPersonaController extends Controller
             return response()->json($persona,200); 
         }
 
-        return response()->json('Los datos introducidos son incorrectos',500);  
+        return response()->json('La contraseña es incorrecta',500);  
     }
 
 
