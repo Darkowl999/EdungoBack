@@ -101,7 +101,7 @@
                     <?php
                         foreach ($Areas as $Area){
                     ?>
-                    <option name="nombreAreaModificada" value="<?php echo $Area->nombreArea; ?>" ><?php echo $Area->nombreArea."/".$Area->nombreCategoria; ?></option>
+                    <option name="nombreAreaModificada" value="<?php echo $Area->nombrearea; ?>" ><?php echo $Area->nombrearea."/".$Area->nombrecategoria; ?></option>
                     <?php 
                         }
                     ?>
@@ -120,7 +120,7 @@
                 <?php
                     foreach ($Areas as $Area){
                 ?>
-                <option name="nombreAreaEliminada" value="<?php echo $Area->nombreArea."/".$Area->nombreCategoria; ?>" ><?php echo $Area->nombre ?></option>
+                <option name="nombreAreaEliminada" value="<?php echo $Area->nombrearea."/".$Area->nombrecategoria; ?>" ><?php echo $Area->nombre ?></option>
                 <?php 
                     }
                 ?>
