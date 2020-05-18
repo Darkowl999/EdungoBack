@@ -36,20 +36,20 @@ class AreaController extends Controller
 
     public function modificarArea(Request $request){
 
-        $nombreArea=$request->nombreAreaModificada;
+        $idArea=$request->idAreaModificada;
         $nuevoNombre=$request->nuevoNombreModificado;
         $idCategoria=$request->idCategoriaModificada;
 
-        Area::where('nombre',$nombreArea)->update(['nombre'=>$nuevoNombre,'id_categoria'=>$idCategoria]);
+        Area::where('id',$idArea)->update(['nombre'=>$nuevoNombre,'id_categoria'=>$idCategoria]);
 
         return redirect('administrar_areas');
     }
 
     public function eliminarArea(Request $request){
 
-        $nombreArea=$request->nombreAreaEliminada;
+        $idArea=$request->idAreaEliminada;
 
-        Area::where('nombre',$nombreArea)->delete();
+        Area::where('nombre',$idArea)->delete();
 
         return redirect('administrar_areas');
     }
