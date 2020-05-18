@@ -39,7 +39,7 @@ class AreaController extends Controller
         $idArea=$request->idAreaModificada;
         $nuevoNombre=$request->nuevoNombreModificado;
         $idCategoria=$request->idCategoriaModificada;
-
+        
         Area::where('id',$idArea)->update(['nombre'=>$nuevoNombre,'id_categoria'=>$idCategoria]);
 
         return redirect('administrar_areas');
