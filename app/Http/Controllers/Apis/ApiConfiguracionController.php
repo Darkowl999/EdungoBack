@@ -12,7 +12,8 @@ class ApiConfiguracionController extends Controller
     }
 
     public function index(Request $request){
-        return Configuracion::all();
+        $configuracion= Configuracion::all();
+        return response()->json($configuracion,200);  
     }
 
 

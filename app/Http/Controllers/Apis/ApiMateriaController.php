@@ -14,7 +14,10 @@ class ApiMateriaController extends Controller
     }
 
     public function index(Request $request){
-        return Materia::where('id_area',$request->idArea)->get();
+        $materias= Materia::where('id_area',$request->idArea)->get();
+        return (is_null($materias))?  
+        response()->json('El area de la peticion no existe',500) :
+        response()->json($materias,200);  
     }
 
 }

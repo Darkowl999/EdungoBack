@@ -14,7 +14,10 @@ class ApiAreaController extends Controller
     }
 
     public function index(Request $request){
-        return Area::where('id_categoria',$request->idCategoria)->get();
+        $areas=Area::where('id_categoria',$request->idCategoria)->get();
+        return (is_null($areas))?  
+        response()->json('La categoria de la peticion no existe',500) :
+        response()->json($areas,200);  
     }
 
 

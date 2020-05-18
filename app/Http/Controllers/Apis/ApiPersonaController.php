@@ -14,13 +14,11 @@ class ApiPersonaController extends Controller
         $this->middleware('guest');
     }
 
-    public function index(Request $request){
+    public function index(){
         return Persona::all();
     }
 
-   /* public function store(Request $request){
 
-    }*/
 
     public function store(Request $request)
     {
@@ -58,7 +56,9 @@ class ApiPersonaController extends Controller
 
         $persona=Persona::create($datos);
 
-        return response()->json($persona,200);
+        return (is_null($persona))?  
+        response()->json('Error al hacer la peticion de los datos',500) :
+        response()->json($persona,200);  
     }
 
 

@@ -17,6 +17,8 @@ class ApiMateriaAuxiliarController extends Controller
         ->join('auxiliar','auxiliar.id_persona','=','materia_auxiliar.id_auxiliar')
         ->where('materia.id','=',$request->id_materia)->get();
 
-        return response()->json($auxiliares,200);
+        return (is_null($auxiliares))?  
+        response()->json('La materia de la peticion no existe',500) :
+        response()->json($auxiliares,200);  
     }
 }

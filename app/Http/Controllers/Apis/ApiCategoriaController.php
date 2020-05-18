@@ -14,7 +14,8 @@ class ApiCategoriaController extends Controller
     }
 
     public function index(){
-        return Categoria::all();
+        $categorias=Categoria::all();
+        return response()->json($categorias,200);  
     }
 
 }
