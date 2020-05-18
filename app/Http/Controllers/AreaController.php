@@ -26,7 +26,7 @@ class AreaController extends Controller
         $nombreArea=$request->nombreAreaIngresada;
         $idCategoria=$request->idCategoriaIngresada;
         $nombreAreaExists=Area::where('nombre',$nombreArea)->first();
-        if (!is_null($nombreArea) && !isnull($idCategoria) && is_null($nombreAreaExists)){
+        if (!is_null($nombreArea) && !is_null($idCategoria) && is_null($nombreAreaExists)){
             Area::insert(['nombre'=> $nombreArea ,'id_categoria'=>$idCategoria]);
         }
 
