@@ -26,9 +26,9 @@ route::get('personas','Apis\ApiPersonaController@index');  //para hacer pruebas
 //route::post('loginPerfilAuxiliar','');
 //route::post('registrarAuxiliar','');
 
-Route::get('categorias','Apis\ApiCategoriaController@index'); //para obtener todas las categorias
-Route::get('areas','Apis\ApiAreaController@index');    //para obtener las areas de una categoria en especifico requiere (id_categoria)
-Route::get('materias','Apis\ApiMateriaController@index'); //para obtener las materias de un area en especifico requiere (id_area)
-Route::get('configuraciones','Apis\ApiConfiguracionController@index'); //muestra las configuraciones como terminos y condiciones
+Route::post('categorias','Apis\ApiCategoriaController@index'); //para obtener todas las categorias
+Route::post('areas','Apis\ApiAreaController@index');    //para obtener las areas de una categoria en especifico requiere (id_categoria)
+Route::post('materias','Apis\ApiMateriaController@index'); //para obtener las materias de un area en especifico requiere (id_area)
+Route::post('configuraciones','Apis\ApiConfiguracionController@index'); //muestra las configuraciones como terminos y condiciones
 
-route::get('auxiliaresMateria','Apis\ApiMateriaAuxiliarController@getAuxiliaresMateria');  //muestra todos los auxiliares de una materia requiere (id_materia)
+route::post('auxiliaresMateria','Apis\ApiMateriaAuxiliarController@getAuxiliaresMateria');  //muestra todos los auxiliares de una materia requiere (id_materia)
