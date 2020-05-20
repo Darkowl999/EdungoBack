@@ -27,6 +27,14 @@ class ApiPersonaController extends Controller
         ,$request->telefono,$request->sexo,$request->email,$request->direccion,$request->fecha_nacimiento
         ,$request->password]);
         */
+
+        if (is_null($request->nombre) || is_null($request->apellido) || is_null($request->nombre_usuario) 
+        || is_null($request->telefono) || is_null($request->sexo) || is_null($request->email)
+        || is_null($request->direccion) || is_null($request->fecha_nacimiento) || is_null($request->password)){
+             return response()->json('Aguno de los campos es nulo',500);
+        }
+
+
         $email=Persona::where('email',$request->email)->first();
         $nombre_usuario=Persona::where('nombre_usuario',$request->nombre_usuario)->first();
 
