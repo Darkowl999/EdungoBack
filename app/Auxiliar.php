@@ -8,6 +8,6 @@ class Auxiliar extends Model
 {
     protected $table ='auxiliar';
     protected $primaryKey='id_persona';
-    protected $fillable = ['id_persona','ci','foto_carnet','ganancia','habilitado','datos_enviados'
+    protected $fillable = ['id_persona','ci','foto_carnet','ganancia','habilitado'
         ,'created_at','updated_at'];
 }
