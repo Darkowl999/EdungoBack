@@ -36,7 +36,7 @@ class ApiAuxiliarController extends Controller
             $fileName = array_pop(explode(DIRECTORY_SEPARATOR, $imgUrl));
             $image = file_get_contents($imgUrl);
      
-            $destinationPath = base_path() . '/public/uploads/images/product/' . $fileName;
+            $destinationPath = base_path() . '/public/uploads/images/ci/' . $fileName;
      
             file_put_contents($destinationPath, $image);
             $attributes['image'] = $fileName;
@@ -44,6 +44,8 @@ class ApiAuxiliarController extends Controller
 
         $auxiliar=Auxiliar::create();
 
-        return (is_null($auxiliar))? response()->json('Error al insertar los datos',500): response()->json($auxiliares,200);   
+        return (is_null($auxiliar))? 
+        response()->json('Error al insertar los datos',500)
+        : response()->json($auxiliares,200);   
     }
 }

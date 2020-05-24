@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Materia;
 use App\Auxiliar;
 use App\MateriaAuxiliar;
+use App\Califica;
 use Illuminate\Support\Facades\DB;
 
 class ApiMateriaAuxiliarController extends Controller
@@ -20,6 +21,7 @@ class ApiMateriaAuxiliarController extends Controller
         $auxiliares=DB::table('materia')
         ->join('materia_auxiliar','materia.id','=','materia_auxiliar.id_materia')
         ->join('auxiliar','auxiliar.id_persona','=','materia_auxiliar.id_auxiliar')
+        ->join('califica','auxiliar.id_persona','=','califica.id_auxiliar')
         ->where('materia.id','=',$request->id_materia)->get();
 
         return response()->json($auxiliares,200);  
