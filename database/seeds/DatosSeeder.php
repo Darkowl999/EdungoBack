@@ -69,7 +69,7 @@ class DatosSeeder extends Seeder
                 'nombre_usuario'=>'Agente0333',
                 'telefono'=>'78579772',
                 'sexo'=>'M',
-                'email'=>'roberto_123_2000@gmail.com',
+                'email'=>'roberto@gmail.com',
                 'direccion'=>'urb cotoca',
                 'fecha_nacimiento'=>'2000-04-02',
                 ],
@@ -112,7 +112,7 @@ class DatosSeeder extends Seeder
             ]
         );
 
-        
+
 
     }
 }
