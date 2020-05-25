@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Auxiliar;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ApiAuxiliarController extends Controller
 {
@@ -25,22 +26,16 @@ class ApiAuxiliarController extends Controller
         $datos=[
             "id_persona"=>$request->id_persona,
             "ci"=>$request->ci,
-            "foto_carnet"=>$request->foto_carnet,
+            "foto_carnet"=>'',
             "ganancia"=>'0',
             "habilitado"=>'0',
         ];
 
-      /*  if ($request->has('imageUrl')) {
+        if ($request->has('foto_carnet')) {
+            $datos->foto_carnet = $request->image->store('/ci');
+        } 
 
-            $imgUrl = $request->get('imageUrl');
-            $fileName = array_pop(explode(DIRECTORY_SEPARATOR, $imgUrl));
-            $image = file_get_contents($imgUrl);
-     
-            $destinationPath = base_path() . '/public/uploads/images/ci/' . $fileName;
-     
-            file_put_contents($destinationPath, $image);
-            $attributes['image'] = $fileName;
-        } */ 
+        return $datos;
 
         $auxiliar=Auxiliar::create();
 
