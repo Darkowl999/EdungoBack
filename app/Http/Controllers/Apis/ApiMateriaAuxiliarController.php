@@ -30,15 +30,15 @@ class ApiMateriaAuxiliarController extends Controller
     public function setMateriaAuxiliar(Request $request){
 
         $materias_auxiliares=MateriaAuxiliar::where('id_materia','=',$request->id_materia
-        ,'and','id_auxiliar','=',$request->id_auxiliar)->get();
+        ,'and','id_auxiliar','=',$request->id_auxiliar)->first();
 
         if ( !is_null($materias_auxiliares)){
             return response()->json('Ya es auxiliar de esa materia',500);  
         }
 
 
-        $materia=Materia::where('id_materia',$request->id_materia)->get();
-        $auxiliar=Auxiliar::where('id_auxiliar',$request->id_auxiliar)->get();
+        $materia=Materia::where('id_materia',$request->id_materia)->first();
+        $auxiliar=Auxiliar::where('id_auxiliar',$request->id_auxiliar)->first();
 
         if (is_null($materia) || is_null(is_null($auxiliar))){
             return response()->json('alguno de los datos enviados es nulo',500);  
