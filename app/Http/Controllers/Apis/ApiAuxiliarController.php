@@ -12,7 +12,7 @@ class ApiAuxiliarController extends Controller
 
     public function existeAuxiliar(Request $request){
 
-        $auxiliar=Auxiliar::find($request->id_persona);
+        $auxiliar=Auxiliar::all();//::find($request->id_persona);
 
         return (is_null($auxiliar))? 
          response()->json('no existe el auxiliar',500)
