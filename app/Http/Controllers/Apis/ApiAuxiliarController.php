@@ -32,7 +32,7 @@ class ApiAuxiliarController extends Controller
         ];
 
         if ($request->has('foto_carnet')) {
-            $datos->foto_carnet = $request->foto_carnet->store('/ci');
+            $datos['foto_carnet'] = $request->foto_carnet->store('/ci');
         } 
 
         return $datos;
