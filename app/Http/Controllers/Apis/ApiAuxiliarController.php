@@ -31,13 +31,26 @@ class ApiAuxiliarController extends Controller
             "habilitado"=>'0',
         ];
 
-        if ($request->has('foto_carnet')) {
-            $datos['foto_carnet'] = $request->foto_carnet->store('ci');
-        } 
+        $existeAux=Auxiliar::where('id_persona',$request->id_persona)->first();
 
-        return $datos;
+        if (is_null($request->id_persona) || is_null($request->ci) || is_null($request->foto_carnet)){
+            response()->json('Error al insertar los datos',500);
+        }
 
-        $auxiliar=Auxiliar::create();
+        if ($existeAux){
+            Storage::delete($existeAux->foto_carnet);
+            if ($request->has('foto_carnet')) {
+                $datos['foto_carnet'] = $request->foto_carnet->store('ci');
+            } 
+            $auxiliar=Auxiliar::where('id_persona',$existeAux->id_persona)->update($datos);
+            $auxiliar=Auxiliar::where('id_persona',$existeAux->id_persona)->first();
+        }else{
+            if ($request->has('foto_carnet')) {
+                $datos['foto_carnet'] = $request->foto_carnet->store('ci');
+            } 
+            $auxiliar=Auxiliar::create($datos);
+        }
+
 
         return (is_null($auxiliar))? 
         response()->json('Error al insertar los datos',500)
