@@ -45,7 +45,7 @@ class ApiCalificaController extends Controller
 
 
     public function calificarAuxiliar(Request $request){
-        
+
     }
 
 }
