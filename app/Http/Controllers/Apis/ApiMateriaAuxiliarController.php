@@ -19,10 +19,9 @@ class ApiMateriaAuxiliarController extends Controller
             return response()->json('La materia de la peticion no existe',500);
         }
         $auxiliares=DB::table('materia')
-        ->join('materia_auxiliar','materia.id','=','materia_auxiliar.id_materia')
-        ->join('auxiliar','auxiliar.id_persona','=','materia_auxiliar.id_auxiliar')
-        ->join('califica','auxiliar.id_persona','=','califica.id_auxiliar')
-        ->where('materia.id','=',$request->id_materia)->get();
+        ->join('materia_auxiliar','materia.id','materia_auxiliar.id_materia')
+        ->join('auxiliar','auxiliar.id_persona','materia_auxiliar.id_auxiliar')
+        ->where('materia.id',$request->id_materia)->get();
 
         return response()->json($auxiliares,200);  
     }
@@ -41,7 +40,7 @@ class ApiMateriaAuxiliarController extends Controller
         $auxiliar=DB::table('auxiliar')->where('id_persona',$request->id_auxiliar)->first();
 
         if (is_null($materia) || is_null($auxiliar)){
-            return response()->json('alguno de los datos enviados es nulo',500);  
+            return response()->json('alguno de los datos enviados es invalido',500);  
         }
 
         $datos=[
