@@ -36,4 +36,4 @@ Route::post('configuraciones','Apis\ApiConfiguracionController@index'); //muestr
 route::post('auxiliaresMateria','Apis\ApiMateriaAuxiliarController@getAuxiliaresMateria');  //muestra todos los auxiliares de una materia requiere (id_materia)
 route::post('setMateriaAuxiliar','Apis\ApiMateriaAuxiliarController@setMateriaAuxiliar');  //añade una materia de un auxiliar requiere(id_materia,id_auxiliar) 
 
-route::post('agregarEliminarFavorito','Api\ApiCalificaController@agregarEliminarFavorito'); //califica auxiliar requiere(id_estudiante,id_auxiliar)
+//route::post('agregarEliminarFavorito','Api\ApiCalificaController@agregarEliminarFavorito'); //califica auxiliar requiere(id_estudiante,id_auxiliar)
