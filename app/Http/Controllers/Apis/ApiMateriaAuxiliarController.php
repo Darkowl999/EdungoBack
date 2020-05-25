@@ -37,8 +37,8 @@ class ApiMateriaAuxiliarController extends Controller
         }
 
 
-        $materia=Materia::where('id_materia',$request->id_materia)->first();
-        $auxiliar=Auxiliar::where('id_auxiliar',$request->id_auxiliar)->first();
+        $materia=Materia::where('id',$request->id_materia)->first();
+        $auxiliar=Auxiliar::where('id_persona',$request->id_auxiliar)->first();
 
         if (is_null($materia) || is_null(is_null($auxiliar))){
             return response()->json('alguno de los datos enviados es nulo',500);  
