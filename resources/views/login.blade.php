@@ -288,7 +288,7 @@ input[type=text]:placeholder,input[type=password]:placeholder {
         <!-- Icon -->
 
         <div class="fadeIn first">
-          <img src="images/ci/IuvNB7ADHkcGP2J8XCQETlqvjVQj21zUUrw0v2xN.jpeg" id="icon" alt="User Icon" />
+          <img src="images/logo.png" id="icon" alt="User Icon" />
         </div>
     
         <!-- Login Form -->
