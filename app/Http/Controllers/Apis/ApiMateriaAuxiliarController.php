@@ -18,11 +18,11 @@ class ApiMateriaAuxiliarController extends Controller
         if (is_null($materia)){
             return response()->json('La materia de la peticion no existe',500);
         }
-        $auxiliares=MateriaAuxiliar::all(); /*DB::table('materia')
+        $auxiliares=DB::table('materia')
         ->join('materia_auxiliar','materia.id','materia_auxiliar.id_materia')
         ->join('auxiliar','auxiliar.id_persona','materia_auxiliar.id_auxiliar')
         ->where('materia.id',$request->id_materia)->get();
-                    */
+                    
         return response()->json($auxiliares,200);  
     }
 
