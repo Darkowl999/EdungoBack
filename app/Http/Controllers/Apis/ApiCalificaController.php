@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class ApiCalificaController extends Controller
 {
-    public function agregarEliminarFavorito(Request $request){
+   /* public function agregarEliminarFavorito(Request $request){
         $id_estudiante=$request->id_estudiante;
         $id_auxiliar=$request->id_auxiliar;
 
@@ -40,8 +40,8 @@ class ApiCalificaController extends Controller
             ];
             $califica=Califica::create($datos);
         }
-        return 0;
-    }
+        return 0; 
+    } */
 
 
     public function calificarAuxiliar(Request $request){
