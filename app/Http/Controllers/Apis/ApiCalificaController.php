@@ -40,7 +40,7 @@ class ApiCalificaController extends Controller
             ];
             $califica=Califica::create($datos);
         }
-        return ApiMateriaAuxiliarController::getAuxiliaresMateria($request);
+        return 0;
     }
 
 
