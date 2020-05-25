@@ -41,21 +41,76 @@ class DatosSeeder extends Seeder
         ]
         );
 
-        DB::table('materia')->insert([
+        DB::table('materia')->insert(
             [
-            'nombre' => 'Calculo 1',
-            'id_area'=>'1'
-            ],
-            [
+                [
+                'nombre' => 'Calculo 1',
+                'id_area'=>'1'
+                ],
+                [
                 'nombre' => 'Matematias',
                 'id_area'=>'2'
                 ],
                 [
                     'nombre' => 'Matematicas',
                     'id_area'=>'3'
-                    ]
+                ]
             ]
-    );
+
+        );
+
+        DB::table('persona')->insert(
+            [
+                [
+                'id'=>'1',
+                'nombre'=>'roberto',
+                'password'=>Hash::make('12345678'),
+                'apellido'=>'Dominguez',
+                'nombre_usuario'=>'Agente0333',
+                'telefono'=>'78579772',
+                'sexo'=>'M',
+                'email'=>'roberto_123_2000@gmail.com',
+                'direccion'=>'urb cotoca',
+                'fecha_nacimiento'=>'2000-04-02',
+                ],
+                [
+                    'id'=>'2',
+                    'nombre'=>'Erick',
+                    'password'=>Hash::make('12345678'),
+                    'apellido'=>'Patton',
+                    'nombre_usuario'=>'Gomito',
+                    'telefono'=>'78579772',
+                    'sexo'=>'M',
+                    'email'=>'roberto_123_2000@gmail.com',
+                    'direccion'=>'urb cotoca',
+                    'fecha_nacimiento'=>'2000-04-02',
+                ]
+            ]
+
+        );
+
+        DB::table('estudiante')->insert(
+            [
+                [
+                'id_persona'=>'1'
+                ],
+                [
+                    'id_persona'=>'2',
+                ]
+            ]
+        );
+
+        DB::table('auxiliar')->insert(
+            [
+                [
+                    'id_persona'=>'2',
+                    'ci'=>'8235543',
+                    'foto_carnet'=>'',
+                    'ganancia'=>'0',
+                    'habilitado'=>'1'
+                ]
+            ]
+        );
 
     }
 }

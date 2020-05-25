@@ -16,7 +16,7 @@ class ApiMateriaAuxiliarController extends Controller
 
         $materia=Materia::find($request->id_materia);
         if (is_null($materia)){
-            return response()->json('La materia de la peticion no existe',500) ;
+            return response()->json('La materia de la peticion no existe',500);
         }
         $auxiliares=DB::table('materia')
         ->join('materia_auxiliar','materia.id','=','materia_auxiliar.id_materia')

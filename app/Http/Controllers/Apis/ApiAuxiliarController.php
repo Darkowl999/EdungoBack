@@ -17,7 +17,7 @@ class ApiAuxiliarController extends Controller
         return (is_null($auxiliar))? 
          response()->json('no existe el auxiliar',500)
          :
-         response()->json($auxiliares,200);   
+         response()->json($auxiliar,200);   
     }
 
     public function enviarSolicitud(Request $request){
@@ -30,7 +30,7 @@ class ApiAuxiliarController extends Controller
             "habilitado"=>'0',
         ];
 
-      /*  if ($request->has('imageUrl')) {
+        if ($request->has('imageUrl')) {
 
             $imgUrl = $request->get('imageUrl');
             $fileName = array_pop(explode(DIRECTORY_SEPARATOR, $imgUrl));
@@ -40,12 +40,12 @@ class ApiAuxiliarController extends Controller
      
             file_put_contents($destinationPath, $image);
             $attributes['image'] = $fileName;
-         } */
+        } 
 
         $auxiliar=Auxiliar::create();
 
         return (is_null($auxiliar))? 
         response()->json('Error al insertar los datos',500)
-        : response()->json($auxiliares,200);   
+        : response()->json($auxiliar,200);   
     }
 }

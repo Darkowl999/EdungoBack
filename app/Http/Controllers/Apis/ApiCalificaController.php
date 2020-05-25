@@ -25,13 +25,27 @@ class ApiCalificaController extends Controller
 
         $existeCalifica=Califica::where('id_auxiliar','=',$id_auxiliar,'and','id_estudiante','=',$id_estudiante)->first();
 
+
         if (!is_null($existeCalifica)){
-            Califica::delete($existeCalifica->id);
+            if ($existeCalifica->favorito=='1'){
+                Califica::where('id',$existeCalifica->id)->update(['favorito'=>'0']);
+            }else{
+                Califica::where('id',$existeCalifica->id)->update(['favorito'=>'1']);
+            }
         }else{
-            $califica=Califica::create();
+            $datos=[
+                'id_estudiante'=>$id_estudiante,
+                'id_auxiliar'=>$id_auxiliar,
+                'favorito'=>'1'
+            ];
+            $califica=Califica::create($datos);
         }
         return ApiMateriaAuxiliarController::getAuxiliaresMateria($request);
     }
 
+
+    public function calificarAuxiliar(Request $request){
+        
+    }
 
 }
