@@ -16,8 +16,8 @@ class MateriaAuxiliar extends Migration
         Schema::create('materia_auxiliar', function (Blueprint $table) {
             $table->id();
             $table->boolean('esAuxiliarOficial');
-            $table->unsignedBigInteger('id_materia')->unique();
-            $table->unsignedBigInteger('id_auxiliar')->unique();
+            $table->unsignedBigInteger('id_materia');
+            $table->unsignedBigInteger('id_auxiliar');
             $table->foreign('id_materia')->references('id')->on('materia')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_auxiliar')->references('id_persona')->on('auxiliar')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
