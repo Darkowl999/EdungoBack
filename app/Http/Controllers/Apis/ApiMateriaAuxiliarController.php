@@ -51,7 +51,7 @@ class ApiMateriaAuxiliarController extends Controller
         ];
         $materia_auxiliar=MateriaAuxiliar::create($datos);
 
-        return response()->json($datos,200);  
+        return response()->json($materia_auxiliar,200);  
     }
 
 }

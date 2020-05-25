@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Apis;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Persona;
+use App\Estudiante;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
@@ -60,13 +61,19 @@ class ApiPersonaController extends Controller
         "direccion"=>$request->direccion,
         "fecha_nacimiento"=>$request->fecha_nacimiento,
         "password"=>Hash::make($request->password)
-    ];
+        ];
 
         $persona=Persona::create($datos);
 
-        return (is_null($persona))?  
-        response()->json('Error al hacer la peticion de los datos',500) :
-        response()->json($persona,200);  
+         if (is_null($persona)){  
+         return response()->json('Error al hacer la peticion de los datos',500);
+        }
+         else{
+            $datosPersona=['id_persona'=>$persona->id_persona];
+            Alumno::create($datosPersona);
+            return response()->json($persona,200);  
+         }
+
     }
 
 

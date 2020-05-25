@@ -30,7 +30,7 @@ class ApiAuxiliarController extends Controller
             "habilitado"=>'0',
         ];
 
-        if ($request->has('imageUrl')) {
+      /*  if ($request->has('imageUrl')) {
 
             $imgUrl = $request->get('imageUrl');
             $fileName = array_pop(explode(DIRECTORY_SEPARATOR, $imgUrl));
@@ -40,7 +40,7 @@ class ApiAuxiliarController extends Controller
      
             file_put_contents($destinationPath, $image);
             $attributes['image'] = $fileName;
-        } 
+        } */ 
 
         $auxiliar=Auxiliar::create();
 
