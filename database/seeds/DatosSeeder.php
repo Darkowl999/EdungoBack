@@ -112,5 +112,7 @@ class DatosSeeder extends Seeder
             ]
         );
 
+        
+
     }
 }
