@@ -14,16 +14,25 @@ class AdministradorSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('administrador')->insert([
-        [
-            'email' => 'roberto_123_2000@hotmail.com',
-            'password' => '$2y$10$uhCdm4QBqsrS6eILsBZXVubBhbQquz5DFnccSGy2MyJzUIzK8VsTu',
-        ],
-        [
-            'email' => 'josecarlitos1998.jcgb@gmail.com',
-            'password' => Hash::make('josegonzales75613786'),
-        ],
-        ]
+        DB::table('administrador')->insert(
+            [
+                [
+                'email' => 'roberto_123_2000@hotmail.com',
+                'password' => '$2y$10$uhCdm4QBqsrS6eILsBZXVubBhbQquz5DFnccSGy2MyJzUIzK8VsTu',
+                ],
+                [
+                'email' => 'josecarlitos1998.jcgb@gmail.com',
+                'password' => Hash::make('josegonzales75613786'),
+                ],
+                [
+                    'email' => 'danianmercado@gmail.com',
+                    'password' => Hash::make('raulesgay'),
+                ],
+                [
+                    'email' => 'raulalbertoortizmontano@gmail.com',
+                    'password' => Hash::make('namaste1234'),
+                ],
+            ]
         );
     }
 }
