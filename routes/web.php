@@ -38,6 +38,7 @@ Route::post('/eliminar_materia','MateriaController@eliminarMateria');
 Route::get('/configuracion','ConfiguracionController@getConfiguraciones');
 Route::post('/modificar_terminos_condiciones','ConfiguracionController@modificarTerminosCondiciones');
 
+Route::get('/solicitudes','AuxiliarController@getSolicitudesAuxiliar');
 
 Route::get('/dashboard',function(){
     return view('dashboard');
