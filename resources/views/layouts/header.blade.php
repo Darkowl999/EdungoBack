@@ -71,7 +71,7 @@
                         </div>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
                             ><div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Pages
+                            Paginas
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                         ></a>
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
@@ -88,7 +88,10 @@
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                                 ></a>
                                 <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="401.html">Terminos y condiciones</a><a class="nav-link" href="500.html">Inconvenientes</a></nav>
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="/solicitudes">Solicitudes auxiliar</a>
+                                        <a class="nav-link" href="500.html">Inconvenientes</a>
+                                    </nav>
                                 </div>
                             </nav>
                         </div>

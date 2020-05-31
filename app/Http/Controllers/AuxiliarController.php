@@ -15,6 +15,6 @@ class AuxiliarController extends Controller
 
     public function getSolicitudesAuxiliar(Request $request){
         $Auxiliares=Auxiliar::where('habilitado','0')->get();
-        return view('',compact('Auxiliares'));
+        return view('solicitudes',compact('Auxiliares'));
     }
 }
