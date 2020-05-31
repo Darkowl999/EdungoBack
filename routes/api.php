@@ -27,6 +27,8 @@ route::get('personas','Apis\ApiPersonaController@index');  //para hacer pruebas 
 route::post('perfilAuxiliar','Apis\ApiAuxiliarController@existeAuxiliar'); //Selecciona perfil auxiliar requiere(id_persona) 
 //devuelve los datos del auxiliar si existe y si no devuelve un error
 route::post('registrarAuxiliar','Apis\ApiAuxiliarController@enviarSolicitud');
+//envia la solicitud para ser auxiliar
+//id_persona,ci,foto_carnet
 
 Route::post('categorias','Apis\ApiCategoriaController@index'); //para obtener todas las categorias
 Route::post('areas','Apis\ApiAreaController@index');    //para obtener las areas de una categoria en especifico requiere (id_categoria)

@@ -17,7 +17,7 @@
     foreach ($Auxiliares as $Auxiliar){
     ?>
     <img src="<?php echo "images/".$Auxiliar->foto_carnet; ?>" id="icon" alt="User Icon" />
-   
+    <?php echo "images/".$Auxiliar->foto_carnet; ?>
    <?php
     }
     ?>
