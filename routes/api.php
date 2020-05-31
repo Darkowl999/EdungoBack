@@ -22,7 +22,6 @@ Route::post('registrarPersona','Apis\ApiPersonaController@store'); //registro de
 Route::post('loginPersona','Apis\ApiPersonaController@login'); //login usuarios requiere (nombre_usuario,password) devuelve datos persona
 
 //INUTILIZADO   route::post('loginPerfilEstudiante','Apis\ApiEstudianteController@loginPerfilEstudiante'); //para entrar como estudiante requiere (id_persona)
-route::get('personas','Apis\ApiPersonaController@index');  //para hacer pruebas devuelve todas las personas
 
 route::post('perfilAuxiliar','Apis\ApiAuxiliarController@existeAuxiliar'); //Selecciona perfil auxiliar requiere(id_persona) 
 //devuelve los datos del auxiliar si existe y si no devuelve un error
@@ -39,3 +38,7 @@ route::post('auxiliaresMateria','Apis\ApiMateriaAuxiliarController@getAuxiliares
 route::post('setMateriaAuxiliar','Apis\ApiMateriaAuxiliarController@setMateriaAuxiliar');  //añade una materia de un auxiliar requiere(id_materia,id_auxiliar) 
 
 //route::post('agregarEliminarFavorito','Api\ApiCalificaController@agregarEliminarFavorito'); //califica auxiliar requiere(id_estudiante,id_auxiliar)
+
+//para hacer pruebas 
+route::get('personas','Apis\ApiPersonaController@index');
+route::get('auxiliares','Apis\ApiAuxiliarController@index');

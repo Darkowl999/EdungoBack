@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Storage;
 class ApiAuxiliarController extends Controller
 {
 
+    public function index(){
+        return response()->json(Auxiliar::all(),200);
+    }
+
     public function existeAuxiliar(Request $request){
 
         $auxiliar=Auxiliar::where('id_persona',$request->id_persona)->first();
