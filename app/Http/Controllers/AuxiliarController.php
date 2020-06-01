@@ -10,7 +10,7 @@ class AuxiliarController extends Controller
 {
 
     public function __construct(){
-        $this->middleware('auth:administrador');
+       // $this->middleware('auth:administrador');
     }
 
     public function getSolicitudesAuxiliar(Request $request){
