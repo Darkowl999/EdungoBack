@@ -17,7 +17,7 @@ class AuxiliarController extends Controller
     public function getSolicitudesAuxiliar(Request $request){
         $Auxiliares=DB::select('select auxiliar.id_persona,persona.foto_perfil,auxiliar.foto_carnet,auxiliar.ci
          from auxiliar,persona 
-         where persona.id=auxiliar.id_persona and recepcionado = 0 ');
+         where persona.id=auxiliar.id_persona and recepcionado = false ');
         return view('solicitudes',compact('Auxiliares'));
     }
 
