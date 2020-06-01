@@ -44,13 +44,13 @@ class ApiAuxiliarController extends Controller
         if ($existeAux){
             Storage::delete($existeAux->foto_carnet);
             if ($request->has('foto_carnet')) {
-                $datos['foto_carnet'] = $request->foto_carnet->store('ci');
+                $datos['foto_carnet'] = $request->foto_carnet->store('images/ci');
             } 
             $auxiliar=Auxiliar::where('id_persona',$existeAux->id_persona)->update($datos);
             $auxiliar=Auxiliar::where('id_persona',$existeAux->id_persona)->first();
         }else{
             if ($request->has('foto_carnet')) {
-                $datos['foto_carnet'] = $request->foto_carnet->store('ci');
+                $datos['foto_carnet'] = $request->foto_carnet->store('images/ci');
             } 
             $auxiliar=Auxiliar::create($datos);
         }
