@@ -70,6 +70,7 @@ class DatosSeeder extends Seeder
                 'telefono'=>'78579772',
                 'sexo'=>'M',
                 'email'=>'roberto@gmail.com',
+                'foto_perfil'=>'',
                 'direccion'=>'urb cotoca',
                 'fecha_nacimiento'=>'2000-04-02',
                 ],
@@ -82,6 +83,7 @@ class DatosSeeder extends Seeder
                     'telefono'=>'78579772',
                     'sexo'=>'M',
                     'email'=>'roberto_123_2000@gmail.com',
+                    'foto_perfil'=>'',
                     'direccion'=>'urb cotoca',
                     'fecha_nacimiento'=>'2000-04-02',
                 ]
@@ -107,7 +109,8 @@ class DatosSeeder extends Seeder
                     'ci'=>'8235543',
                     'foto_carnet'=>'',
                     'ganancia'=>'0',
-                    'habilitado'=>'1'
+                    'habilitado'=>'1',
+                    'recepcionado'=>'1'
                 ]
             ]
         );

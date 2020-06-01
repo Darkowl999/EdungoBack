@@ -19,7 +19,7 @@ class Auxiliar extends Migration
             $table->string('foto_carnet');
             $table->unsignedInteger('ganancia');
             $table->boolean('habilitado');
-          //  $table->boolean('datos_enviados');
+            $table->boolean('recepcionado');
             $table->foreign('id_persona')->references('id')->on('persona')->onDelete('cascade')->onUpdate('cascade');
             $table->primary('id_persona');
             $table->timestamps();

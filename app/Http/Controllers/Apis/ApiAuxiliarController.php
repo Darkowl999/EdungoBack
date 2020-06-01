@@ -33,6 +33,7 @@ class ApiAuxiliarController extends Controller
             "foto_carnet"=>'',
             "ganancia"=>'0',
             "habilitado"=>'0',
+            "recepcionado"=>'0'
         ];
 
         $existeAux=Auxiliar::where('id_persona',$request->id_persona)->first();
@@ -60,4 +61,9 @@ class ApiAuxiliarController extends Controller
         response()->json('Error al insertar los datos',500)
         : response()->json($auxiliar,200);   
     }
+
+
+
+
+
 }

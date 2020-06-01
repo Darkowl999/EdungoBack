@@ -60,7 +60,8 @@ class ApiPersonaController extends Controller
         "email"=>$request->email,
         "direccion"=>$request->direccion,
         "fecha_nacimiento"=>$request->fecha_nacimiento,
-        "password"=>Hash::make($request->password)
+        "password"=>Hash::make($request->password),
+        "foto_perfil"=>""
         ];
 
         $persona=Persona::create($datos);

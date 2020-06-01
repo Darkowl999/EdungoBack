@@ -13,9 +13,7 @@
     
     <!-- imagenaux,imagencarnet,nombre,apellido,ci (aceptar,eliminar) -->
 
-    <?php
-    foreach ($Auxiliares as $Auxiliar){
-    ?>
+
 
 
     <div class="container-fluid">
@@ -24,8 +22,7 @@
             <li class="breadcrumb-item active">Administrar solicitudes de auxiliares.</li>
         </ol>
 
-
-
+        
            <table class="table">
             <thead class="thead-dark">
               <tr>
@@ -38,41 +35,49 @@
               </tr>
             </thead>
             <tbody>
+
+              <?php
+              $i=0;
+                foreach ($Auxiliares as $Auxiliar){
+                  $i=$i+1;
+              ?>
+
               <tr>
-                <th scope="row">1</th>
+              <th scope="row">{{$i}}</th>
                 <td>        ​   
                     <picture>
-                        <img class="img-fluid img-thumbnail" src="<?php echo "storage/".$Auxiliar->foto_carnet; ?>" alt="Ci" />
+                        <img class="img-fluid img-thumbnail" src="<?php echo asset("storage/".$Auxiliar->foto_perfil); ?>" alt="perfil" />
                     </picture>
                 </td>
                 <td>                    
                      <picture>
-                         <img class="img-fluid img-thumbnail" src="<?php echo "storage/".$Auxiliar->foto_carnet; ?>" alt="Ci" />
+                         <img class="img-fluid img-thumbnail" src="<?php echo asset("storage/".$Auxiliar->foto_carnet); ?>" alt="Ci" />
                      </picture>
                 </td>
                 <td><?php echo $Auxiliar->ci; ?></td>
                 <td>
-                    <button type="button" class="btn btn-success">Aceptar</button>
-                    <button type="button" class="btn btn-danger">Rechazar</button>
+                    <form action="" method="post">
+                      <input type="hidden"  name="id_persona" value="<?php echo $Auxiliar->id_persona; ?>">
+                      <button type="button" class="btn btn-success">Aceptar</button>
+                      <button type="button" class="btn btn-danger">Rechazar</button>
+                    </form>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-light">Ver detalles</button>
+                    <form action="detalle_auxiliar" method="get">
+                      <input type="hidden"  name="id_persona" value="<?php echo $Auxiliar->id_persona; ?>">
+                      <input type="submit" class="btn btn-light" value="Ver detalles.">
+                    </form>
                 </td>
               </tr>
-             
+              <?php
+                }
+              ?>
             </tbody>
           </table>
-   
-       
+        
     </div>
 
 
-
-
-
-   <?php
-    }
-    ?>
 
 </body>
 </html>

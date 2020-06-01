@@ -23,6 +23,7 @@ class Persona extends Migration
             $table->string('email')->unique();
             $table->string('direccion');
             $table->date('fecha_nacimiento');
+            $table->string('foto_perfil');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
