@@ -39,10 +39,15 @@ class ApiAuxiliarController extends Controller
         $existeAux=Auxiliar::where('id_persona',$request->id_persona)->first();
 
         if (is_null($request->id_persona) || is_null($request->ci) || is_null($request->foto_carnet)){
-            response()->json('Error al insertar los datos',500);
+           return response()->json('Error al insertar los datos',500);
         }
 
         if ($existeAux){
+            $existeCi=Auxiliar::where('ci',$request->ci)->where('id_persona','!=',$request->id_persona)->first();
+            if (!is_null($existeCi)){
+                return response()->json('El ci ya esta siendo utilizado por otra persona',500);
+            }
+
             Storage::delete($existeAux->foto_carnet);
             if ($request->has('foto_carnet')) {
                 $datos['foto_carnet'] = $request->foto_carnet->store('images/ci');
@@ -50,6 +55,11 @@ class ApiAuxiliarController extends Controller
             $auxiliar=Auxiliar::where('id_persona',$existeAux->id_persona)->update($datos);
             $auxiliar=Auxiliar::where('id_persona',$existeAux->id_persona)->first();
         }else{
+            $existeCi=Auxiliar::where('ci',$request->ci)->first();
+            if (!is_null($existeCi)){
+                return response()->json('El ci ya esta siendo utilizado por otra persona',500);
+            }
+
             if ($request->has('foto_carnet')) {
                 $datos['foto_carnet'] = $request->foto_carnet->store('images/ci');
             } 

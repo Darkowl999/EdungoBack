@@ -42,7 +42,7 @@
                 <h4 class="col">Foto de carnet:</h4>
                 <h5 class="col">
                     <picture>
-                        <img class="img-fluid img-thumbnail" src="<?php echo asset("storage/".$Auxiliar->foto_carnet); ?>" alt="Perfil" />
+                        <img class="img-fluid img-thumbnail" src="<?php echo asset("storage/".$Auxiliar->foto_carnet); ?>" alt="Ci" />
                     </picture>
                 </h5>
                 <div class="w-100"><hr></div>
