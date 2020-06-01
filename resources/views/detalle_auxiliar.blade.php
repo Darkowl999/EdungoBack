@@ -31,6 +31,10 @@
                 <h5 class="col">{{$Auxiliar->apellido}}</h5>
                 <div class="w-100"><hr></div>
 
+                <h4 class="col">Carnet de identidad:</h4>
+                <h5 class="col">{{$Auxiliar->ci}}</h5>
+                <div class="w-100"><hr></div>
+
                 <h4 class="col">Foto de perfil:</h4>
                 <h5 class="col">
                     <picture>

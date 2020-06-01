@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Apis;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Auxiliar;
+use App\Persona;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -38,7 +39,7 @@ class ApiAuxiliarController extends Controller
 
         $existeAux=Auxiliar::where('id_persona',$request->id_persona)->first();
 
-        if (is_null($request->id_persona) || is_null($request->ci) || is_null($request->foto_carnet)){
+        if (is_null($request->id_persona) || is_null($request->ci) || is_null($request->foto_carnet) || is_null($request->foto_perfil)){
            return response()->json('Error al insertar los datos',500);
         }
 
@@ -52,6 +53,8 @@ class ApiAuxiliarController extends Controller
             if ($request->has('foto_carnet')) {
                 $datos['foto_carnet'] = $request->foto_carnet->store('images/ci');
             } 
+
+
             $auxiliar=Auxiliar::where('id_persona',$existeAux->id_persona)->update($datos);
             $auxiliar=Auxiliar::where('id_persona',$existeAux->id_persona)->first();
         }else{
@@ -63,8 +66,17 @@ class ApiAuxiliarController extends Controller
             if ($request->has('foto_carnet')) {
                 $datos['foto_carnet'] = $request->foto_carnet->store('images/ci');
             } 
+
             $auxiliar=Auxiliar::create($datos);
         }
+
+        if ($request->has('foto_perfil')) {
+            $foto_perfil = $request->foto_perfil->store('images/perfil');
+            $persona = Persona::find($request->id_persona);
+            Storage::delete($persona->foto_perfil);
+            $persona->foto_perfil = $foto_perfil;
+            $persona->save();
+        } 
 
 
         return (is_null($auxiliar))? 
