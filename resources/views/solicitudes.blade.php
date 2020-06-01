@@ -17,7 +17,7 @@
     foreach ($Auxiliares as $Auxiliar){
     ?>
     <img src="<?php echo "storage/".$Auxiliar->foto_carnet; ?>" alt="Ci" />
-    <img src="<?php echo "storage/images/".$Auxiliar->foto_carnet; ?>" alt="Ci" />
+    <img src="<?php echo "public/storage/images/".$Auxiliar->foto_carnet; ?>" alt="Ci" />
 
     <?php echo "storage/".$Auxiliar->foto_carnet; ?>
    <?php
