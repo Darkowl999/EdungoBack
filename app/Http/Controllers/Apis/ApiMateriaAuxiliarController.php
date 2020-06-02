@@ -18,13 +18,35 @@ class ApiMateriaAuxiliarController extends Controller
         if (is_null($materia)){
             return response()->json('La materia de la peticion no existe',500);
         }
-        $auxiliares=DB::table('materia')
+        $DatosAuxiliares=DB::table('materia')
         ->join('materia_auxiliar','materia.id','materia_auxiliar.id_materia')
         ->join('auxiliar','auxiliar.id_persona','materia_auxiliar.id_auxiliar')
+        ->join('persona','auxiliar.id_persona','persona.id')
         ->where('materia.id',$request->id_materia)->get();
+
+
+        $Auxiliares=[];
+
+        foreach ($DatosAuxiliares as $auxiliar){
+            $Dato=[
+                'id_persona'=>$auxiliar->id,
+                'nombre'=>$auxiliar->nombre,
+                'favorito'=>'0',
+                'apellido'=>$auxiliar->apellido,
+                'foto_perfil'=>$auxiliar->foto_perfil,
+                'nombre_usuario'=>$auxiliar->nombre_usuario,
+            ];
+            $Califica=Califica::where('id_auxiliar',$auxiliar->id)->where('id_estudiante',$request->id_estudiante)->first();
+            if (!is_null($Califica)){
+                 $Dato->favorito=$Califica->favorito;   
+            }
+            array_push($Auxiliares,$Dato);
+        }
                     
-        return response()->json($auxiliares,200);  
+        return response()->json($Auxiliares,200);  
     }
+
+
 
     public function setMateriaAuxiliar(Request $request){
 

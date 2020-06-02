@@ -27,7 +27,7 @@ route::post('perfilAuxiliar','Apis\ApiAuxiliarController@existeAuxiliar'); //Sel
 //devuelve los datos del auxiliar si existe y si no devuelve un error
 route::post('registrarAuxiliar','Apis\ApiAuxiliarController@enviarSolicitud');
 //envia la solicitud para ser auxiliar
-//id_persona,ci,foto_carnet
+//id_persona,ci,foto_carnet,foto_perfil
 
 Route::post('categorias','Apis\ApiCategoriaController@index'); //para obtener todas las categorias
 Route::post('areas','Apis\ApiAreaController@index');    //para obtener las areas de una categoria en especifico requiere (id_categoria)
@@ -37,7 +37,7 @@ Route::post('configuraciones','Apis\ApiConfiguracionController@index'); //muestr
 route::post('auxiliaresMateria','Apis\ApiMateriaAuxiliarController@getAuxiliaresMateria');  //muestra todos los auxiliares de una materia requiere (id_materia)
 route::post('setMateriaAuxiliar','Apis\ApiMateriaAuxiliarController@setMateriaAuxiliar');  //añade una materia de un auxiliar requiere(id_materia,id_auxiliar) 
 
-//route::post('agregarEliminarFavorito','Api\ApiCalificaController@agregarEliminarFavorito'); //califica auxiliar requiere(id_estudiante,id_auxiliar)
+route::post('agregarEliminarFavorito','Apis\ApiCalificaController@agregarEliminarFavorito'); //califica auxiliar requiere(id_estudiante,id_auxiliar)
 
 //para hacer pruebas 
 route::get('personas','Apis\ApiPersonaController@index');

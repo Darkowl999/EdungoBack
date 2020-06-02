@@ -18,8 +18,8 @@ class Califica extends Migration
             $table->string('comentario',500);
             $table->UnsignedInteger('estrellas');
             $table->boolean('favorito');
-            $table->unsignedBigInteger('id_estudiante')->unique();
-            $table->unsignedBigInteger('id_auxiliar')->unique();
+            $table->unsignedBigInteger('id_estudiante');
+            $table->unsignedBigInteger('id_auxiliar');
             $table->foreign('id_estudiante')->references('id_persona')->on('estudiante')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_auxiliar')->references('id_persona')->on('auxiliar')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

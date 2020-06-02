@@ -23,24 +23,26 @@ class ApiCalificaController extends Controller
             return response()->json('no existe el auxiliar',500);
         }
 
-        $existeCalifica=Califica::where('id_auxiliar','=',$id_auxiliar,'and','id_estudiante','=',$id_estudiante)->first();
+        $existeCalifica=Califica::where('id_auxiliar','=',$id_auxiliar)->where('id_estudiante','=',$id_estudiante)->first();
 
-
+        $califica=$existeCalifica;
         if (!is_null($existeCalifica)){
             if ($existeCalifica->favorito=='1'){
-                Califica::where('id',$existeCalifica->id)->update(['favorito'=>'0']);
+                 Califica::where('id',$existeCalifica->id)->update(['favorito'=>'0']);
             }else{
-                Califica::where('id',$existeCalifica->id)->update(['favorito'=>'1']);
+                 Califica::where('id',$existeCalifica->id)->update(['favorito'=>'1']);
             }
         }else{
             $datos=[
                 'id_estudiante'=>$id_estudiante,
                 'id_auxiliar'=>$id_auxiliar,
-                'favorito'=>'1'
+                'favorito'=>'1',
+                'comentario'=>'',
+                'estrellas'=>'0'
             ];
             $califica=Califica::create($datos);
         }
-        return 0; 
+        return $califica; 
     } 
 
 
