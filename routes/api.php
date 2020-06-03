@@ -27,9 +27,9 @@ route::post('perfilAuxiliar','Apis\ApiAuxiliarController@existeAuxiliar'); //Sel
 //devuelve los datos del auxiliar si existe y si no devuelve un error
 route::post('registrarAuxiliar','Apis\ApiAuxiliarController@enviarSolicitud');
 //envia la solicitud para ser auxiliar
-//id_persona,ci,foto_carnet,foto_perfil
+//requiere(id_persona,ci,foto_carnet,foto_perfil) devuelve los datos de la solicitud
 
-Route::post('categorias','Apis\ApiCategoriaController@index'); //para obtener todas las categorias
+Route::post('categorias','Apis\ApiCategoriaController@index'); //para obtener todas las categorias 
 Route::post('areas','Apis\ApiAreaController@index');    //para obtener las areas de una categoria en especifico requiere (id_categoria)
 Route::post('materias','Apis\ApiMateriaController@index'); //para obtener las materias de un area en especifico requiere (id_area)
 Route::post('configuraciones','Apis\ApiConfiguracionController@index'); //muestra las configuraciones como terminos y condiciones
@@ -38,6 +38,14 @@ route::post('auxiliaresMateria','Apis\ApiMateriaAuxiliarController@getAuxiliares
 route::post('setMateriaAuxiliar','Apis\ApiMateriaAuxiliarController@setMateriaAuxiliar');  //añade una materia de un auxiliar requiere(id_materia,id_auxiliar) 
 
 route::post('agregarEliminarFavorito','Apis\ApiCalificaController@agregarEliminarFavorito'); //califica auxiliar requiere(id_estudiante,id_auxiliar)
+
+route::post('pedirAuxiliatura','Apis\ApiPeticionController@pedirAuxiliatura'); //pide un grupo de auxiliatura 
+//requiere (duracion,es_particular,fecha,hora,modalidad_virtual,nombre,precio_deseado,comentario,id_estudiante,id_materia,id_auxiliar)
+//devuelve los datos del grupo de materia creado
+
+route::post('crearGrupoAuxiliatura','Apis\ApiGrupoController@crearGrupoAuxiliatura');
+// requiere (dia,duracion,es_particular,fechafin,fechaini,hora,modalidad_virtual,nombre,precio_deseado,comentario,id_estudiante,id_materia,id_auxiliar)
+//devuelve los datos del grupo de materia creado
 
 //para hacer pruebas 
 route::get('personas','Apis\ApiPersonaController@index');

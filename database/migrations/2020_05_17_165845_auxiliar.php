@@ -17,7 +17,7 @@ class Auxiliar extends Migration
             $table->unsignedBigInteger('id_persona');
             $table->unsignedInteger('ci')->unique();
             $table->string('foto_carnet');
-            $table->unsignedInteger('ganancia');
+            $table->unsignedFloat('ganancia');
             $table->boolean('habilitado');
             $table->boolean('recepcionado');
             $table->foreign('id_persona')->references('id')->on('persona')->onDelete('cascade')->onUpdate('cascade');
