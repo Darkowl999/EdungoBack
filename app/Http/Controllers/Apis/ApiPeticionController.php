@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Peticion;
 use App\Grupo;
 use App\MateriaAuxiliar;
+use \Carbon\Carbon;
 
 class ApiPeticionController extends Controller
 {
@@ -15,11 +16,30 @@ class ApiPeticionController extends Controller
 
         //(duracion,es_particular,fecha,hora,modalidad_virtual,nombre,precio_deseado,comentario,id_estudiante,id_materia,id_auxiliar)
 
-        
-        $dia;
+        $fechaCarbon = Carbon::parse($request->fecha);
+        $nombre_dia=$fechaCarbon->dayOfWeek;
+        switch($nombre_dia)
+        {
+        case 0: $nombre_dia="Domingo";
+        break;    
+        case 1: $nombre_dia="Lunes";
+        break;
+        case 2: $nombre_dia="Martes";
+        break;
+        case 3: $nombre_dia="Miercoles";
+        break;
+        case 4: $nombre_dia="Jueves";
+        break;
+        case 5: $nombre_dia="Viernes";
+        break;
+        case 6: $nombre_dia="Sabado";
+        break;
+        }
+
+
         $datosGrupo=[
             'cancelado'=>false,
-            'dia'=>$dia,
+            'dia'=>$nombre_dia,
             'disponible'=>true,
             'duracion'=>$request->duracion,
             'es_particular'=>$request->es_particular,
