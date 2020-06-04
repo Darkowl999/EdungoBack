@@ -7,6 +7,8 @@ use App\Persona;
 use App\Estudiante;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 
 class ApiPersonaController extends Controller
 {
@@ -18,7 +20,6 @@ class ApiPersonaController extends Controller
     public function index(){
         return Persona::all();
     }
-
 
 
     public function store(Request $request)
@@ -79,12 +80,11 @@ class ApiPersonaController extends Controller
 
 
     public function login(Request $request){
-        $personaConsulta=DB::table('persona')->where('nombre_usuario','=',$request->nombre_usuario)->first();
-        if (is_null($personaConsulta)){
+        $persona=Persona::where('nombre_usuario',$request->nombre_usuario)->first();
+        if (is_null($persona)){
             return response()->json('El nombre de usuario es incorrecto',500);  
         }
 
-        $persona=Persona::where('nombre_usuario',$request->nombre_usuario)->first();
         if (Hash::check($request->password, $persona->password)){
             return response()->json($persona,200); 
         }
@@ -92,5 +92,54 @@ class ApiPersonaController extends Controller
         return response()->json('La clave es incorrecta',500);  
     }
 
+    public function cambiarPassword(Request $request){
+        $persona=Persona::where('id',$request->id)->first();
+        if (is_null($persona)){
+            return response()->json('El id usuario no existe',500);  
+        }
+
+        if (Hash::check($request->password, $persona->password)){
+            if ($request->new_password==$request->confirm_new_password){
+            
+            }else{
+                return response()->json('La confirmacion de la contraseña es incorrecta',500);  
+            }
+        }else{
+            return response()->json('La contraseña es incorrecta',500);  
+        }
+
+        if (Hash::check($request->new_password,$persona->password)){
+            return response()->json('La contraseña no puede ser igual a la anterior',500);  
+        }
+
+        $password=[
+            "password"=>Hash::make($request->new_password)
+        ];
+
+        $persona=Persona::where('id',$request->id)->update($password);
+        $persona=Persona::where('id',$request->id)->first();
+        return response()->json($persona,200);
+    }
+
+    public function cambiarFotoPerfil(Request $request){
+
+        $persona=Persona::where('id',$request->id)->first();
+
+        $datos=["foto_perfil"=>""];
+        if (!is_null($persona)){
+            if ($request->has('foto_perfil')) {
+                Storage::delete($persona->foto_perfil);
+                $datos["foto_perfil"] = $request->foto_perfil->store('images/perfil');
+                Persona::where('id',$request->id)->update($datos);
+                $persona=Persona::where('id',$request->id)->first();
+            }else{
+                return response()->json('No se ha adjuntado ninguna foto',500);  
+            } 
+        }else{
+            return response()->json('El id de la persona no existe',500);  
+        }
+
+        return response()->json($persona,200);  
+    }
 
 }

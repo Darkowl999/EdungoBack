@@ -18,10 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('registrarPersona','Apis\ApiPersonaController@store'); //registro de usuarios requiere 
 //(nombre,apellido,nombre_usuario,telefono,sexo,email,direccion,fecha_nacimiento,password,confirm_password) devuelve datos persona
+route::post('cambiarPassword','Apis\ApiPersonaController@cambiarPassword'); //cambia la contraseña requiere (id,password,new_password,confirm_new_password)
+route::post('cambiarFotoPerfil','Apis\ApiPersonaController@cambiarFotoPerfil'); //cambia la foto de perfil requiere(id,foto_perfil)
 
 Route::post('loginPersona','Apis\ApiPersonaController@login'); //login usuarios requiere (nombre_usuario,password) devuelve datos persona
-
-//INUTILIZADO   route::post('loginPerfilEstudiante','Apis\ApiEstudianteController@loginPerfilEstudiante'); //para entrar como estudiante requiere (id_persona)
 
 route::post('perfilAuxiliar','Apis\ApiAuxiliarController@existeAuxiliar'); //Selecciona perfil auxiliar requiere(id_persona) 
 //devuelve los datos del auxiliar si existe y si no devuelve un error
@@ -38,14 +38,19 @@ route::post('auxiliaresMateria','Apis\ApiMateriaAuxiliarController@getAuxiliares
 route::post('setMateriaAuxiliar','Apis\ApiMateriaAuxiliarController@setMateriaAuxiliar');  //añade una materia de un auxiliar requiere(id_materia,id_auxiliar) 
 
 route::post('agregarEliminarFavorito','Apis\ApiCalificaController@agregarEliminarFavorito'); //califica auxiliar requiere(id_estudiante,id_auxiliar)
+route::post('calificarAuxiliar','Apis\ApiCalificaController@calificarAuxiliar'); //califica al auxiliar requiere(id_estudiante,id_auxiliar,estrellas)
 
 route::post('pedirAuxiliatura','Apis\ApiPeticionController@pedirAuxiliatura'); //pide un grupo de auxiliatura 
 //requiere (duracion,es_particular,fecha,hora,modalidad_virtual,nombre,precio_deseado,comentario,id_estudiante,id_materia,id_auxiliar)
 //devuelve los datos del grupo de materia creado
 
+route::post('inscribirGrupo','Apis\ApiInscribeController@inscribirGrupo'); //inscribe un estudiante a un grupo no particular
+//requiere(id_estudiante,id_grupo)
+
 route::post('crearGrupoAuxiliatura','Apis\ApiGrupoController@crearGrupoAuxiliatura');
 // requiere (dia,duracion,es_particular,fechafin,fechaini,hora,modalidad_virtual,nombre,precio_deseado,comentario,id_estudiante,id_materia,id_auxiliar)
 //devuelve los datos del grupo de materia creado
+
 
 //para hacer pruebas 
 route::get('personas','Apis\ApiPersonaController@index');

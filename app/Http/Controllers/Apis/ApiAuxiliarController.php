@@ -49,8 +49,9 @@ class ApiAuxiliarController extends Controller
                 return response()->json('El ci ya esta siendo utilizado por otra persona',500);
             }
 
-            Storage::delete($existeAux->foto_carnet);
+            
             if ($request->has('foto_carnet')) {
+                Storage::delete($existeAux->foto_carnet);
                 $datos['foto_carnet'] = $request->foto_carnet->store('images/ci');
             } 
 

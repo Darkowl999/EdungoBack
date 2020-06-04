@@ -16,6 +16,14 @@ class ApiPeticionController extends Controller
 
         //(duracion,es_particular,fecha,hora,modalidad_virtual,nombre,precio_deseado,comentario,id_estudiante,id_materia,id_auxiliar)
 
+
+        if (is_null($request->duracion) || is_null($request->es_particular) || is_null($request->fecha) 
+        || is_null($request->hora) || is_null($request->comentario) | is_null($request->id_auxiliar)
+        || is_null($request->modalidad_virtual) || is_null($request->nombre) 
+        || is_null($request->precio_deseado) || is_null($request->id_estudiante) || is_null($request->id_materia)){
+            return response()->json('Error en los datos',500);
+        }
+
         $fechaCarbon = Carbon::parse($request->fecha);
         $nombre_dia=$fechaCarbon->dayOfWeek;
         switch($nombre_dia)
@@ -53,6 +61,8 @@ class ApiPeticionController extends Controller
 
         $grupo=Grupo::create($datosGrupo);
 
+
+        
         //['id','aceptado','comentario','precio_deseado','created_at','updated_at','id_grupo','id_estudiante','id_materia_auxiliar'];
         $id_materia_auxiliar=MateriaAuxiliar::where('id_materia',$request->id_materia)->where('id_auxiliar',$request->id_auxiliar)->first();
 
