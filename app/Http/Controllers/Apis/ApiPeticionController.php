@@ -43,7 +43,7 @@ class ApiPeticionController extends Controller
         case 6: $nombre_dia="Sabado";
         break;
         }
-
+        $id_materia_auxiliar=MateriaAuxiliar::where('id_materia',$request->id_materia)->where('id_auxiliar',$request->id_auxiliar)->first();
 
         $datosGrupo=[
             'cancelado'=>false,
@@ -56,7 +56,8 @@ class ApiPeticionController extends Controller
             'hora'=>$request->hora,
             'modalidad_virtual'=>$request->modalidad_virtual,
             'nombre'=>$request->nombre,
-            'precio'=>'0'
+            'precio'=>'0',
+            'id_materia_auxiliar'=>$id_materia_auxiliar,
         ];
 
         $grupo=Grupo::create($datosGrupo);

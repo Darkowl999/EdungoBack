@@ -47,9 +47,16 @@ route::post('pedirAuxiliatura','Apis\ApiPeticionController@pedirAuxiliatura'); /
 route::post('inscribirGrupo','Apis\ApiInscribeController@inscribirGrupo'); //inscribe un estudiante a un grupo no particular
 //requiere(id_estudiante,id_grupo)
 
-route::post('crearGrupoAuxiliatura','Apis\ApiGrupoController@crearGrupoAuxiliatura');
-// requiere (dia,duracion,es_particular,fechafin,fechaini,hora,modalidad_virtual,nombre,precio_deseado,comentario,id_estudiante,id_materia,id_auxiliar)
+
+
+//METODOS QUE FALTAN IMPLEMENTAR
+route::post('crearGrupoAuxiliatura','Apis\ApiGrupoController@crearGrupoAuxiliatura'); //el auxiliar crea un grupo de auxiliatura
+// requiere (dia,duracion,fechafin,fechaini,hora,nombre,precio,id_materia,id_auxiliar)
 //devuelve los datos del grupo de materia creado
+
+route::post('getPeticionesAuxiliatura','Apis\ApiPeticionController@getPeticionesAuxiliatura'); //devuelve las peticiones hechas a un auxiliar
+//requiere (id_auxiliar)
+route::post('aceptarAuxiliatura','Apis\ApiPeticionController@aceptarAuxiliatura');
 
 
 //para hacer pruebas 

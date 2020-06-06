@@ -71,8 +71,8 @@ class ApiPersonaController extends Controller
          return response()->json('Error al hacer la peticion de los datos',500);
         }
          else{
-            $datosPersona=['id_persona'=>$persona->id_persona];
-            Alumno::create($datosPersona);
+            $datosEstudiante=['id_persona'=>$persona->id_persona];
+            Estudiante::create($datosEstudiante);
             return response()->json($persona,200);  
          }
 

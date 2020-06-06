@@ -26,6 +26,8 @@ class Grupo extends Migration
             $table->boolean('modalidad_virtual');
             $table->string('nombre',120);
             $table->unsignedFloat('precio');
+            $table->unsignedBigInteger('id_materia_auxiliar');
+            $table->foreign('id_materia_auxiliar')->references('id')->on('materia_auxiliar')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
