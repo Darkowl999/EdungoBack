@@ -115,6 +115,15 @@ class DatosSeeder extends Seeder
             ]
         );
 
+        DB::table('materia_auxiliar')->insert(
+            [
+                [
+                    'id_materia'=>'1',
+                    'id_auxiliar'=>'2',
+                    'esAuxiliarOficial'=>false
+                ]
+            ]
+        );
 
 
     }
